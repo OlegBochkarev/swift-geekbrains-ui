@@ -12,6 +12,8 @@
 		D59FEEBB222A779000A55470 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D59FEEB9222A779000A55470 /* Main.storyboard */; };
 		D59FEEBD222A779200A55470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D59FEEBC222A779200A55470 /* Assets.xcassets */; };
 		D59FEEC0222A779200A55470 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D59FEEBE222A779200A55470 /* LaunchScreen.storyboard */; };
+		D5A29E702232F08100B5FEA2 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A29E6F2232F08100B5FEA2 /* FriendsTableViewCell.swift */; };
+		D5A29E732232F32B00B5FEA2 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A29E722232F32B00B5FEA2 /* Friend.swift */; };
 		D5F0C95A222CFAF100E8C756 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C959222CFAF100E8C756 /* FriendsTableViewController.swift */; };
 		D5F0C95C222CFBFD00E8C756 /* FriendCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C95B222CFBFD00E8C756 /* FriendCollectionViewController.swift */; };
 		D5F0C95E222CFC6F00E8C756 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C95D222CFC6F00E8C756 /* GroupsTableViewController.swift */; };
@@ -26,6 +28,8 @@
 		D59FEEBC222A779200A55470 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D59FEEBF222A779200A55470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D59FEEC1222A779200A55470 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5A29E6F2232F08100B5FEA2 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		D5A29E722232F32B00B5FEA2 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		D5F0C959222CFAF100E8C756 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		D5F0C95B222CFBFD00E8C756 /* FriendCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionViewController.swift; sourceTree = "<group>"; };
 		D5F0C95D222CFC6F00E8C756 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				D5A29E6A2232EDA200B5FEA2 /* View */,
+				D5A29E712232F2F800B5FEA2 /* Common */,
 				D5A29E692232ED7D00B5FEA2 /* Storyboards */,
 				D5A29E682232ED2100B5FEA2 /* Supporting Files */,
 				D59FEEBC222A779200A55470 /* Assets.xcassets */,
@@ -128,8 +133,17 @@
 		D5A29E6E2232EF0100B5FEA2 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D5A29E6F2232F08100B5FEA2 /* FriendsTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		D5A29E712232F2F800B5FEA2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D5A29E722232F32B00B5FEA2 /* Friend.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,9 +220,11 @@
 				D59FEEB8222A779000A55470 /* AuthViewController.swift in Sources */,
 				D5F0C95C222CFBFD00E8C756 /* FriendCollectionViewController.swift in Sources */,
 				D5F0C95E222CFC6F00E8C756 /* GroupsTableViewController.swift in Sources */,
+				D5A29E702232F08100B5FEA2 /* FriendsTableViewCell.swift in Sources */,
 				D59FEEB6222A779000A55470 /* AppDelegate.swift in Sources */,
 				D5F0C95A222CFAF100E8C756 /* FriendsTableViewController.swift in Sources */,
 				D5F0C960222CFC9000E8C756 /* GroupsAddTableViewController.swift in Sources */,
+				D5A29E732232F32B00B5FEA2 /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
