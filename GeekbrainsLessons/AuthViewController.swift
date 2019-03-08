@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AuthViewController.swift
 //  GeekbrainsLessons
 //
 //  Created by Oleg Bochkarev on 02/03/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AuthViewController: UIViewController {
     
     // MARK: - PROPERTIES
     
@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var signInBottomConstraint: NSLayoutConstraint!
     
     private let minBottomConstraint: CGFloat = 150
+    
+    private let mainSegueIdentifier = "MainSegueIdentifier"
     
     // MARK: - INIT
     
@@ -56,7 +58,11 @@ class ViewController: UIViewController {
             showAlert(title: "Error", message: "fill login and password")
             return
         }
-        showAlert(title: "start auth", message: nil)
+        if login == "login" && password == "password" {
+            performSegue(withIdentifier: mainSegueIdentifier, sender: self)
+        } else {
+            showAlert(title: "Error", message: "Incorrect login or password")
+        }
     }
     
     // MARK: - KEYBOARD
@@ -115,7 +121,7 @@ class ViewController: UIViewController {
 
 // MARK: - UITextFieldDelegate
 
-extension ViewController: UITextFieldDelegate {
+extension AuthViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // only when adding on the end of textfield && it's a space
         if range.location == textField.text?.count && string == " " {
