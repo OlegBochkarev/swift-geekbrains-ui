@@ -1,5 +1,5 @@
 //
-//  SecondTableViewController.swift
+//  FriendsTableViewController.swift
 //  GeekbrainsLessons
 //
 //  Created by Oleg Bochkarev on 04/03/2019.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SecondTableViewController: UITableViewController {
+class FriendsTableViewController: UITableViewController {
     
     // MARK: - PROPERTIES
     
-    private let tableVCSegueIdentifier = "TableVCSegueIdentifier"
+    private let collectionVCSegueIdentifier = "CollectionVCSegueIdentifier"
     
     // MARK: - INIT
     
@@ -29,7 +29,7 @@ class SecondTableViewController: UITableViewController {
     // MARK: - BUTTON ACTIONS
     
     @IBAction func performSegueButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: tableVCSegueIdentifier, sender: self)
+        performSegue(withIdentifier: collectionVCSegueIdentifier, sender: self)
     }
     
     // MARK: - Table view data source

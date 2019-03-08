@@ -1,5 +1,5 @@
 //
-//  FirstCollectionViewController.swift
+//  FriendCollectionViewController.swift
 //  GeekbrainsLessons
 //
 //  Created by Oleg Bochkarev on 04/03/2019.
@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class FirstCollectionViewController: UICollectionViewController {
+class FriendCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

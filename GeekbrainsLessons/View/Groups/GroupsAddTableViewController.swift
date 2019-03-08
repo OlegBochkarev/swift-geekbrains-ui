@@ -1,5 +1,5 @@
 //
-//  FirstTableViewController.swift
+//  GroupsAddTableViewController.swift
 //  GeekbrainsLessons
 //
 //  Created by Oleg Bochkarev on 04/03/2019.
@@ -8,11 +8,9 @@
 
 import UIKit
 
-class FirstTableViewController: UITableViewController {
+class GroupsAddTableViewController: UITableViewController {
     
     // MARK: - PROPERTIES
-    
-    private let collectionVCSegueIdentifier = "CollectionVCSegueIdentifier"
     
     // MARK: - INIT
     
@@ -25,13 +23,7 @@ class FirstTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
-    // MARK: - BUTTON ACTIONS
-    
-    @IBAction func performSegueButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: collectionVCSegueIdentifier, sender: self)
-    }
-    
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -45,6 +45,9 @@ class AuthViewController: UIViewController {
         passwordTextField.delegate = self
         hideKeyboardWhenTappedAround()
         signInBottomConstraint.constant = minBottomConstraint
+        //для удобства
+        loginTextField.text = "login"
+        passwordTextField.text = "password"
     }
     
     // MARK: - BUTTON ACTIONS

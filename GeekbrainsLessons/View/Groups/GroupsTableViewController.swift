@@ -1,5 +1,5 @@
 //
-//  ThirdTableViewController.swift
+//  GroupsTableViewController.swift
 //  GeekbrainsLessons
 //
 //  Created by Oleg Bochkarev on 04/03/2019.
@@ -8,9 +8,11 @@
 
 import UIKit
 
-class ThirdTableViewController: UITableViewController {
+class GroupsTableViewController: UITableViewController {
     
     // MARK: - PROPERTIES
+    
+    private let tableVCSegueIdentifier = "TableVCSegueIdentifier"
     
     // MARK: - INIT
     
@@ -23,7 +25,13 @@ class ThirdTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    // MARK: - BUTTON ACTIONS
+    
+    @IBAction func performSegueButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: tableVCSegueIdentifier, sender: self)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

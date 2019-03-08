@@ -103,10 +103,10 @@
             </objects>
             <point key="canvasLocation" x="140" y="133.5832083958021"/>
         </scene>
-        <!--Second Table View Controller-->
+        <!--Groups Table View Controller-->
         <scene sceneID="z9N-Ff-fjV">
             <objects>
-                <tableViewController id="zN2-v1-PbM" customClass="SecondTableViewController" customModule="GeekbrainsLessons" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="zN2-v1-PbM" customClass="GroupsTableViewController" customModule="GeekbrainsLessons" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MxI-z9-GwB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,10 +141,10 @@
             </objects>
             <point key="canvasLocation" x="3001" y="466"/>
         </scene>
-        <!--First Table View Controller-->
+        <!--Friends Table View Controller-->
         <scene sceneID="BgK-ZT-Wf0">
             <objects>
-                <tableViewController id="4Gm-nE-hmd" customClass="FirstTableViewController" customModule="GeekbrainsLessons" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="4Gm-nE-hmd" customClass="FriendsTableViewController" customModule="GeekbrainsLessons" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pav-y6-o8S">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -179,10 +179,10 @@
             </objects>
             <point key="canvasLocation" x="3002" y="-199"/>
         </scene>
-        <!--First Collection View Controller-->
+        <!--Friend Collection View Controller-->
         <scene sceneID="gX3-9o-Jrl">
             <objects>
-                <collectionViewController id="E4y-bY-Gtn" customClass="FirstCollectionViewController" customModule="GeekbrainsLessons" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="E4y-bY-Gtn" customClass="FriendCollectionViewController" customModule="GeekbrainsLessons" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="khc-sd-cF9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -269,10 +269,10 @@
             </objects>
             <point key="canvasLocation" x="2037.5999999999999" y="465.51724137931041"/>
         </scene>
-        <!--Third Table View Controller-->
+        <!--Groups Add Table View Controller-->
         <scene sceneID="E0O-DI-b3J">
             <objects>
-                <tableViewController id="S9W-GY-lWu" customClass="ThirdTableViewController" customModule="GeekbrainsLessons" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="S9W-GY-lWu" customClass="GroupsAddTableViewController" customModule="GeekbrainsLessons" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PqN-vj-thR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
