@@ -8,77 +8,83 @@
 
 import UIKit
 
+protocol GroupsAddTableViewControllerDelegate: class {
+    func addGroup(_ group: Group)
+}
+
 class GroupsAddTableViewController: UITableViewController {
     
     // MARK: - PROPERTIES
+    
+    var groups: [Group] = []
+    
+    weak var delegate: GroupsAddTableViewControllerDelegate?
+    
+    private let cellIdentifier = "GroupAddCell"
     
     // MARK: - INIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        configure()
+    }
+    
+    // MARK: - CONFIGURE
+    
+    func configure() {
+        let firstGroup = Group(name: "Group add 1", avatarColor: .green)
+        let secondGroup = Group(name: "Group add 2", avatarColor: .gray)
+        let thirdGroup = Group(name: "Group add 3", avatarColor: .black)
+        groups = [firstGroup, secondGroup, thirdGroup]
+        
+        tableView.reloadData()
     }
 
-    // MARK: - Table view data source
-
+    // MARK: - UITableViewDataSource
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return groups.count
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! GroupsTableViewCell
+        
+        let group = groups[indexPath.row]
+        cell.nameLabel.text = group.name
+        cell.avatarView.backgroundColor = group.avatarColor
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        if groups.count > 1 {
+            return true
+        } else {
+            return false
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            groups.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let group = groups[indexPath.row]
+        delegate?.addGroup(group)
+        tableView.deselectRow(at: indexPath, animated: true)
+        navigationController?.popViewController(animated: true)
     }
-    */
-
 }
