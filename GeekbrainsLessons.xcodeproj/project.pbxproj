@@ -12,10 +12,14 @@
 		D59FEEBB222A779000A55470 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D59FEEB9222A779000A55470 /* Main.storyboard */; };
 		D59FEEBD222A779200A55470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D59FEEBC222A779200A55470 /* Assets.xcassets */; };
 		D59FEEC0222A779200A55470 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D59FEEBE222A779200A55470 /* LaunchScreen.storyboard */; };
-		D5F0C95A222CFAF100E8C756 /* FirstTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C959222CFAF100E8C756 /* FirstTableViewController.swift */; };
-		D5F0C95C222CFBFD00E8C756 /* FirstCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C95B222CFBFD00E8C756 /* FirstCollectionViewController.swift */; };
-		D5F0C95E222CFC6F00E8C756 /* SecondTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C95D222CFC6F00E8C756 /* SecondTableViewController.swift */; };
-		D5F0C960222CFC9000E8C756 /* ThirdTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C95F222CFC9000E8C756 /* ThirdTableViewController.swift */; };
+		D5A29E702232F08100B5FEA2 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A29E6F2232F08100B5FEA2 /* FriendsTableViewCell.swift */; };
+		D5A29E732232F32B00B5FEA2 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A29E722232F32B00B5FEA2 /* Friend.swift */; };
+		D5A29E752232FB9C00B5FEA2 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A29E742232FB9C00B5FEA2 /* Group.swift */; };
+		D5A29E782232FE2200B5FEA2 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A29E772232FE2200B5FEA2 /* GroupsTableViewCell.swift */; };
+		D5F0C95A222CFAF100E8C756 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C959222CFAF100E8C756 /* FriendsTableViewController.swift */; };
+		D5F0C95C222CFBFD00E8C756 /* FriendCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C95B222CFBFD00E8C756 /* FriendCollectionViewController.swift */; };
+		D5F0C95E222CFC6F00E8C756 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C95D222CFC6F00E8C756 /* GroupsTableViewController.swift */; };
+		D5F0C960222CFC9000E8C756 /* GroupsAddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C95F222CFC9000E8C756 /* GroupsAddTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,10 +30,14 @@
 		D59FEEBC222A779200A55470 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D59FEEBF222A779200A55470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D59FEEC1222A779200A55470 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D5F0C959222CFAF100E8C756 /* FirstTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTableViewController.swift; sourceTree = "<group>"; };
-		D5F0C95B222CFBFD00E8C756 /* FirstCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCollectionViewController.swift; sourceTree = "<group>"; };
-		D5F0C95D222CFC6F00E8C756 /* SecondTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTableViewController.swift; sourceTree = "<group>"; };
-		D5F0C95F222CFC9000E8C756 /* ThirdTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTableViewController.swift; sourceTree = "<group>"; };
+		D5A29E6F2232F08100B5FEA2 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		D5A29E722232F32B00B5FEA2 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		D5A29E742232FB9C00B5FEA2 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		D5A29E772232FE2200B5FEA2 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
+		D5F0C959222CFAF100E8C756 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		D5F0C95B222CFBFD00E8C756 /* FriendCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionViewController.swift; sourceTree = "<group>"; };
+		D5F0C95D222CFC6F00E8C756 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
+		D5F0C95F222CFC9000E8C756 /* GroupsAddTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsAddTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,18 +70,94 @@
 		D59FEEB4222A779000A55470 /* GeekbrainsLessons */ = {
 			isa = PBXGroup;
 			children = (
-				D59FEEB5222A779000A55470 /* AppDelegate.swift */,
-				D59FEEB7222A779000A55470 /* AuthViewController.swift */,
-				D5F0C959222CFAF100E8C756 /* FirstTableViewController.swift */,
-				D5F0C95B222CFBFD00E8C756 /* FirstCollectionViewController.swift */,
-				D5F0C95D222CFC6F00E8C756 /* SecondTableViewController.swift */,
-				D5F0C95F222CFC9000E8C756 /* ThirdTableViewController.swift */,
-				D59FEEB9222A779000A55470 /* Main.storyboard */,
+				D5A29E6A2232EDA200B5FEA2 /* View */,
+				D5A29E712232F2F800B5FEA2 /* Common */,
+				D5A29E692232ED7D00B5FEA2 /* Storyboards */,
+				D5A29E682232ED2100B5FEA2 /* Supporting Files */,
 				D59FEEBC222A779200A55470 /* Assets.xcassets */,
-				D59FEEBE222A779200A55470 /* LaunchScreen.storyboard */,
-				D59FEEC1222A779200A55470 /* Info.plist */,
 			);
 			path = GeekbrainsLessons;
+			sourceTree = "<group>";
+		};
+		D5A29E682232ED2100B5FEA2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D59FEEB5222A779000A55470 /* AppDelegate.swift */,
+				D59FEEC1222A779200A55470 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D5A29E692232ED7D00B5FEA2 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D59FEEB9222A779000A55470 /* Main.storyboard */,
+				D59FEEBE222A779200A55470 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D5A29E6A2232EDA200B5FEA2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D5A29E6B2232EDE400B5FEA2 /* Auth */,
+				D5A29E6C2232EDEC00B5FEA2 /* Friends */,
+				D5A29E6D2232EE0400B5FEA2 /* Groups */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D5A29E6B2232EDE400B5FEA2 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D59FEEB7222A779000A55470 /* AuthViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		D5A29E6C2232EDEC00B5FEA2 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				D5A29E6E2232EF0100B5FEA2 /* Cells */,
+				D5F0C959222CFAF100E8C756 /* FriendsTableViewController.swift */,
+				D5F0C95B222CFBFD00E8C756 /* FriendCollectionViewController.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		D5A29E6D2232EE0400B5FEA2 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				D5A29E762232FC1200B5FEA2 /* Cells */,
+				D5F0C95D222CFC6F00E8C756 /* GroupsTableViewController.swift */,
+				D5F0C95F222CFC9000E8C756 /* GroupsAddTableViewController.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		D5A29E6E2232EF0100B5FEA2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D5A29E6F2232F08100B5FEA2 /* FriendsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D5A29E712232F2F800B5FEA2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D5A29E722232F32B00B5FEA2 /* Friend.swift */,
+				D5A29E742232FB9C00B5FEA2 /* Group.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D5A29E762232FC1200B5FEA2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D5A29E772232FE2200B5FEA2 /* GroupsTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,12 +231,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5A29E752232FB9C00B5FEA2 /* Group.swift in Sources */,
 				D59FEEB8222A779000A55470 /* AuthViewController.swift in Sources */,
-				D5F0C95C222CFBFD00E8C756 /* FirstCollectionViewController.swift in Sources */,
-				D5F0C95E222CFC6F00E8C756 /* SecondTableViewController.swift in Sources */,
+				D5F0C95C222CFBFD00E8C756 /* FriendCollectionViewController.swift in Sources */,
+				D5F0C95E222CFC6F00E8C756 /* GroupsTableViewController.swift in Sources */,
+				D5A29E702232F08100B5FEA2 /* FriendsTableViewCell.swift in Sources */,
+				D5A29E782232FE2200B5FEA2 /* GroupsTableViewCell.swift in Sources */,
 				D59FEEB6222A779000A55470 /* AppDelegate.swift in Sources */,
-				D5F0C95A222CFAF100E8C756 /* FirstTableViewController.swift in Sources */,
-				D5F0C960222CFC9000E8C756 /* ThirdTableViewController.swift in Sources */,
+				D5F0C95A222CFAF100E8C756 /* FriendsTableViewController.swift in Sources */,
+				D5F0C960222CFC9000E8C756 /* GroupsAddTableViewController.swift in Sources */,
+				D5A29E732232F32B00B5FEA2 /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +388,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69X235PTGS;
-				INFOPLIST_FILE = GeekbrainsLessons/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GeekbrainsLessons/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -318,7 +406,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69X235PTGS;
-				INFOPLIST_FILE = GeekbrainsLessons/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GeekbrainsLessons/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
