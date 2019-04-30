@@ -19,6 +19,7 @@
 		D5A29E752232FB9C00B5FEA2 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A29E742232FB9C00B5FEA2 /* Group.swift */; };
 		D5A29E782232FE2200B5FEA2 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A29E772232FE2200B5FEA2 /* GroupsTableViewCell.swift */; };
 		D5B59A2C227827AD002188F6 /* VKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B59A2B227827AD002188F6 /* VKService.swift */; };
+		D5B59A2E22782DAC002188F6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B59A2D22782DAC002188F6 /* WebKit.framework */; };
 		D5F0C95A222CFAF100E8C756 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C959222CFAF100E8C756 /* FriendsTableViewController.swift */; };
 		D5F0C95C222CFBFD00E8C756 /* FriendCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C95B222CFBFD00E8C756 /* FriendCollectionViewController.swift */; };
 		D5F0C95E222CFC6F00E8C756 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C95D222CFC6F00E8C756 /* GroupsTableViewController.swift */; };
@@ -42,6 +43,7 @@
 		D5A29E742232FB9C00B5FEA2 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		D5A29E772232FE2200B5FEA2 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		D5B59A2B227827AD002188F6 /* VKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKService.swift; sourceTree = "<group>"; };
+		D5B59A2D22782DAC002188F6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		D5F0C959222CFAF100E8C756 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		D5F0C95B222CFBFD00E8C756 /* FriendCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionViewController.swift; sourceTree = "<group>"; };
 		D5F0C95D222CFC6F00E8C756 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5B59A2E22782DAC002188F6 /* WebKit.framework in Frameworks */,
 				A5A4D9C4538761BBA357F7CC /* Pods_GeekbrainsLessons.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,6 +75,7 @@
 		791701622B3FB298C8272BAD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D5B59A2D22782DAC002188F6 /* WebKit.framework */,
 				C50748FA372ED6AB8560CD9F /* Pods_GeekbrainsLessons.framework */,
 			);
 			name = Frameworks;

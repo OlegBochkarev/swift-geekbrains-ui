@@ -18,84 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Tm-de-V2k">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGI-Tz-8pS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A1O-AZ-Tns" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TUX-7Q-nCR">
-                                                <rect key="frame" x="16" y="210.5" width="343" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="dph-Fe-B1Q"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9h-iy-qeN">
-                                                <rect key="frame" x="16" y="318.5" width="343" height="30"/>
-                                                <color key="backgroundColor" red="0.1137254902" green="0.67843137249999996" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="E72-KD-PmB"/>
-                                                </constraints>
-                                                <state key="normal" title="Sign in">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="signInTappeed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fp6-Uw-9mp"/>
-                                                </connections>
-                                            </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wAd-pj-9Nb">
-                                                <rect key="frame" x="16" y="264.5" width="343" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="qNN-hn-LNf"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="w9h-iy-qeN" secondAttribute="trailing" constant="16" id="CVE-m2-rOL"/>
-                                            <constraint firstItem="TUX-7Q-nCR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="A1O-AZ-Tns" secondAttribute="top" priority="750" constant="50" id="O2N-bE-1pv"/>
-                                            <constraint firstAttribute="trailing" secondItem="TUX-7Q-nCR" secondAttribute="trailing" constant="16" id="XQ4-LE-dJb"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="w9h-iy-qeN" secondAttribute="bottom" priority="750" constant="100" id="cbt-Qg-Uq9"/>
-                                            <constraint firstItem="TUX-7Q-nCR" firstAttribute="leading" secondItem="A1O-AZ-Tns" secondAttribute="leading" constant="16" id="h4I-oE-mg9"/>
-                                            <constraint firstItem="w9h-iy-qeN" firstAttribute="top" secondItem="wAd-pj-9Nb" secondAttribute="bottom" constant="24" id="hPZ-Hr-2eO"/>
-                                            <constraint firstAttribute="trailing" secondItem="wAd-pj-9Nb" secondAttribute="trailing" constant="16" id="jVp-6w-sHp"/>
-                                            <constraint firstItem="wAd-pj-9Nb" firstAttribute="top" secondItem="TUX-7Q-nCR" secondAttribute="bottom" constant="24" id="pCx-AO-NfM"/>
-                                            <constraint firstItem="w9h-iy-qeN" firstAttribute="leading" secondItem="A1O-AZ-Tns" secondAttribute="leading" constant="16" id="ufk-0B-KCA"/>
-                                            <constraint firstItem="wAd-pj-9Nb" firstAttribute="leading" secondItem="A1O-AZ-Tns" secondAttribute="leading" constant="16" id="xgG-C3-mxG"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="w9h-iy-qeN" firstAttribute="centerY" secondItem="6Tm-de-V2k" secondAttribute="centerY" id="4i2-po-I6h"/>
-                                    <constraint firstAttribute="trailing" secondItem="A1O-AZ-Tns" secondAttribute="trailing" id="7ex-1v-QPS"/>
-                                    <constraint firstItem="A1O-AZ-Tns" firstAttribute="top" secondItem="6Tm-de-V2k" secondAttribute="top" id="BSS-kf-QrO"/>
-                                    <constraint firstAttribute="bottom" secondItem="A1O-AZ-Tns" secondAttribute="bottom" id="G2j-TJ-ir6"/>
-                                    <constraint firstItem="A1O-AZ-Tns" firstAttribute="leading" secondItem="6Tm-de-V2k" secondAttribute="leading" id="lFf-Ex-Vip"/>
-                                </constraints>
-                            </scrollView>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tm-de-V2k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="C3y-e4-cJF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6Tm-de-V2k" secondAttribute="bottom" id="lUS-1R-V4f"/>
-                            <constraint firstItem="A1O-AZ-Tns" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="ol3-7k-cJo"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Tm-de-V2k" secondAttribute="trailing" id="q2I-gC-oKn"/>
-                            <constraint firstItem="A1O-AZ-Tns" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" priority="250" id="reA-Zr-ESZ"/>
-                            <constraint firstItem="6Tm-de-V2k" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="usX-Gn-GfB"/>
+                            <constraint firstAttribute="bottom" secondItem="lGI-Tz-8pS" secondAttribute="bottom" id="FNU-p8-Qew"/>
+                            <constraint firstAttribute="trailing" secondItem="lGI-Tz-8pS" secondAttribute="trailing" id="cns-aJ-kzb"/>
+                            <constraint firstItem="lGI-Tz-8pS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gJ9-Cm-tmk"/>
+                            <constraint firstItem="lGI-Tz-8pS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="wV5-8u-jcg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="loginTextField" destination="TUX-7Q-nCR" id="fAH-Fq-pKL"/>
-                        <outlet property="passwordTextField" destination="wAd-pj-9Nb" id="bI6-2p-jcK"/>
-                        <outlet property="signInBottomConstraint" destination="cbt-Qg-Uq9" id="wM0-sl-Pkc"/>
-                        <outlet property="signInButton" destination="w9h-iy-qeN" id="fgl-8h-jxq"/>
+                        <outlet property="webView" destination="lGI-Tz-8pS" id="e7r-wN-G2B"/>
                         <segue destination="3HP-RR-G5N" kind="presentation" identifier="MainSegueIdentifier" id="Zq8-9h-6zX"/>
                     </connections>
                 </viewController>
