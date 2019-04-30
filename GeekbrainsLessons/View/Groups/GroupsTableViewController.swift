@@ -12,6 +12,9 @@ class GroupsTableViewController: UITableViewController {
     
     // MARK: - PROPERTIES
     
+    private let vkService = VKService(userId: Session.shared.userId!,
+                                      token: Session.shared.token!)
+    
     var groups: [Group] = []
     
     private let addGroupVCSegueIdentifier = "AddGroupVCSegueIdentifier"
@@ -22,6 +25,8 @@ class GroupsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        loadGroups()
+        loadGroups(withQuery: "аниме")
     }
     
     // MARK: - CONFIGURE
@@ -34,6 +39,16 @@ class GroupsTableViewController: UITableViewController {
         groups = [firstGroup, secondGroup, thirdGroup, fourthGroup]
         
         tableView.reloadData()
+    }
+    
+    // MARK: - LOAD
+    
+    func loadGroups() {
+        vkService.groups(withUserId: Session.shared.userId!)
+    }
+    
+    func loadGroups(withQuery q: String) {
+        vkService.searchGroups(withQuery: q)
     }
     
     // MARK: - NAVIGATION

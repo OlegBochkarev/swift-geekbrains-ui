@@ -26,6 +26,7 @@ class FriendsTableViewController: UITableViewController {
         super.viewDidLoad()
         configure()
         loadFriends()
+        loadPhotos()
     }
     
     // MARK: - CONFIGURE
@@ -43,6 +44,9 @@ class FriendsTableViewController: UITableViewController {
     
     func loadFriends() {
         vkService.friends(withUserId: Session.shared.userId!)
+    }
+    
+    func loadPhotos() {
         vkService.photos(withOwnerId: Session.shared.userId!, album: .profile)
     }
     

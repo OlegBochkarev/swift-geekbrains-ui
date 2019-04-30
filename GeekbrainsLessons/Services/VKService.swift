@@ -44,7 +44,21 @@ final class VKService {
         self.token = token
     }
     
-    // MARK: -
+    // MARK: - PRIVATE
+    
+    func GET(_ urlString: String, parameters: Parameters?) {
+        manager.request(urlString,
+                        method: .get,
+                        parameters: parameters,
+                        encoding: URLEncoding.default,
+                        headers: headers).validate()
+            .responseJSON { (response) in
+                
+                print("response = \(response)")
+        }
+    }
+    
+    // MARK: - PUBLIC
     
     //userId - любого пользователя в вк
     func friends(withUserId userId: Int) {
@@ -58,15 +72,8 @@ final class VKService {
                                       "name_case": "nom",
                                       "access_token": token,
                                       "v": apiVersion]
-        manager.request(urlString,
-                        method: .get,
-                        parameters: parameters,
-                        encoding: URLEncoding.default,
-                        headers: headers).validate()
-            .responseJSON { (response) in
-                
-                print("friends response = \(response)")
-        }
+        
+        GET(urlString, parameters: parameters)
     }
     
     //идентификатор владельца альбома.
@@ -80,15 +87,33 @@ final class VKService {
                                       "offset": 0,
                                       "access_token": token,
                                       "v": apiVersion]
-        manager.request(urlString,
-                        method: .get,
-                        parameters: parameters,
-                        encoding: URLEncoding.default,
-                        headers: headers).validate()
-            .responseJSON { (response) in
-                
-                print("photos response = \(response)")
-        }
+        
+        GET(urlString, parameters: parameters)
+    }
+    
+    func groups(withUserId userId: Int) {
+        let urlString = serverURL + "groups.get"
+        
+        let parameters: Parameters = ["user_id": userId,
+                                      "extended": 1,
+                                      "count" : 20,
+                                      "offset": 0,
+                                      "access_token": token,
+                                      "v": apiVersion]
+        
+        GET(urlString, parameters: parameters)
+    }
+    //глобальный поиск групп
+    func searchGroups(withQuery q: String) {
+        let urlString = serverURL + "groups.search"
+        
+        let parameters: Parameters = ["q": q,
+                                      "count" : 20,
+                                      "offset": 0,
+                                      "access_token": token,
+                                      "v": apiVersion]
+        
+        GET(urlString, parameters: parameters)
     }
     
 }
