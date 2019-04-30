@@ -12,6 +12,9 @@ class FriendsTableViewController: UITableViewController {
     
     // MARK: - PROPERTIES
     
+    private let vkService = VKService(userId: Session.shared.userId!,
+                                      token: Session.shared.token!)
+    
     var friends: [Friend] = []
     
     private let friendVCSegueIdentifier = "FriendVCSegueIdentifier"
@@ -22,6 +25,8 @@ class FriendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        loadFriends()
+        loadPhotos()
     }
     
     // MARK: - CONFIGURE
@@ -33,6 +38,16 @@ class FriendsTableViewController: UITableViewController {
         friends = [firstFriend, secondFriend, thirdFriend]
         
         tableView.reloadData()
+    }
+    
+    // MARK: - LOAD
+    
+    func loadFriends() {
+        vkService.friends(withUserId: Session.shared.userId!)
+    }
+    
+    func loadPhotos() {
+        vkService.photos(withOwnerId: Session.shared.userId!, album: .profile)
     }
     
     // MARK: - NAVIGATION

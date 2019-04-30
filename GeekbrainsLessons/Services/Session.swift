@@ -12,7 +12,7 @@ class Session {
     
     static let shared = Session()
     
-    var toket: String? //для хранения токена в VK,
+    var token: String? //для хранения токена в VK,
     var userId: Int? //для хранения идентификатора пользователя ВК.
     
     private init() {

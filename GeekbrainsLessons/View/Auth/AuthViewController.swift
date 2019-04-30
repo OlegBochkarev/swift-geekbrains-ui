@@ -7,17 +7,13 @@
 //
 
 import UIKit
+import WebKit
 
 class AuthViewController: UIViewController {
     
     // MARK: - PROPERTIES
     
-    @IBOutlet weak var loginTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var signInButton: UIButton!
-    @IBOutlet weak var signInBottomConstraint: NSLayoutConstraint!
-    
-    private let minBottomConstraint: CGFloat = 150
+    @IBOutlet weak var webView: WKWebView!
     
     private let mainSegueIdentifier = "MainSegueIdentifier"
     
@@ -26,124 +22,71 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        startAuth()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        subscribeKeyboardEvents()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        unsubscribeKeyboardEvents()
     }
     
     // MARK: - CONFIGURE
     
     func configure() {
-        loginTextField.delegate = self
-        passwordTextField.delegate = self
-        hideKeyboardWhenTappedAround()
-        signInBottomConstraint.constant = minBottomConstraint
-        //для удобства
-        loginTextField.text = "login"
-        passwordTextField.text = "password"
+        webView.navigationDelegate = self
     }
     
-    // MARK: - BUTTON ACTIONS
-
-    @IBAction func signInTappeed(_ sender: Any) {
-        guard let login = loginTextField.text,
-            let password = passwordTextField.text else {
-            return
-        }
-        if login.isEmpty && password.isEmpty {
-            showAlert(title: "Error", message: "fill login and password")
-            return
-        }
-        if login == "login" && password == "password" {
-            
-            let session = Session.shared
-            session.userId = 123
-            session.toket = "Token abc"
-            
-            performSegue(withIdentifier: mainSegueIdentifier, sender: self)
-        } else {
-            showAlert(title: "Error", message: "Incorrect login or password")
-        }
-    }
-    
-    // MARK: - KEYBOARD
-    
-    private func subscribeKeyboardEvents() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    private func unsubscribeKeyboardEvents() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc private func keyboardWillShow(_ notification: NSNotification) {
-        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
-            return
-        }
-        let keyboardRectangle = keyboardFrame.cgRectValue
-        let keyboardHeight = keyboardRectangle.height
-        if signInBottomConstraint.constant < keyboardHeight {
-            signInBottomConstraint.constant = keyboardHeight
-        }
-    }
-    
-    @objc private func keyboardWillHide(_ notification: NSNotification) {
-        signInBottomConstraint.constant = minBottomConstraint
-    }
-    
-    @objc func hideKeyboard() {
-        view.endEditing(true)
-    }
-    
-    private func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    // MARK: - ALERT
-    
-    func showAlert(title: String?, message: String?) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let continueTitle = "Ok"
-        let continueAction = UIAlertAction(title: continueTitle,
-                                           style: UIAlertAction.Style.cancel) { _ in
-                                            
-        }
-        alertController.addAction(continueAction)
-        present(alertController, animated: true, completion: nil)
-    }
-    
-}
-
-// MARK: - UITextFieldDelegate
-
-extension AuthViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // only when adding on the end of textfield && it's a space
-        if range.location == textField.text?.count && string == " " {
-            // ignore replacement string and add your own
-            textField.text = (textField.text ?? "") + "\u{00a0}"// \u{00a0} - отображаемый пробел
-            return false
-        }
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        signInTappeed(self)
+    func startAuth() {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "oauth.vk.com"
+        urlComponents.path = "/authorize"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "client_id", value: "6966189"),
+            URLQueryItem(name: "display", value: "mobile"),
+            URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
+            URLQueryItem(name: "scope", value: "262150"),
+            URLQueryItem(name: "response_type", value: "token"),
+            URLQueryItem(name: "v", value: "5.95")
+        ]
         
-        return true
+        let request = URLRequest(url: urlComponents.url!)
+        
+        webView.load(request)
     }
+    
 }
 
+// MARK: - WKNavigationDelegate
+
+extension AuthViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment  else {
+            decisionHandler(.allow)
+            return
+        }
+        
+        let params = fragment
+            .components(separatedBy: "&")
+            .map { $0.components(separatedBy: "=") }
+            .reduce([String: String]()) { result, param in
+                var dict = result
+                let key = param[0]
+                let value = param[1]
+                dict[key] = value
+                return dict
+        }
+        
+        if let token = params["access_token"], let userId = params["user_id"] {
+            print("token = \(token); userId = \(userId)")
+            Session.shared.token = token
+            Session.shared.userId = Int(userId)
+            performSegue(withIdentifier: mainSegueIdentifier, sender: self)
+        }
+        
+        decisionHandler(.cancel)
+    }
+}
