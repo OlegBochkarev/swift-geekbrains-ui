@@ -9,11 +9,17 @@
 import Foundation
 import Alamofire
 
+enum PhotoAlbum: String {
+    case wall
+    case profile
+    case saved
+}
+
 final class VKService {
     
     // MARK: - PROPERTIES
     
-    private let userId: Int
+    private let userId: Int //id текущего пользователя
     private let token: String
     
     private let serverURL: String = "https://api.vk.com/method/"
@@ -40,7 +46,8 @@ final class VKService {
     
     // MARK: -
     
-    func friends() {
+    //userId - любого пользователя в вк
+    func friends(withUserId userId: Int) {
         let urlString = serverURL + "friends.get"
         
         let parameters: Parameters = ["user_id": userId,
@@ -59,6 +66,28 @@ final class VKService {
             .responseJSON { (response) in
                 
                 print("friends response = \(response)")
+        }
+    }
+    
+    //идентификатор владельца альбома.
+    //у сообществ отрицательное число
+    func photos(withOwnerId ownerId: Int, album: PhotoAlbum = .profile) {
+        let urlString = serverURL + "photos.get"
+        
+        let parameters: Parameters = ["owner_id": ownerId,
+                                      "album_id": album.rawValue,
+                                      "count" : 20,
+                                      "offset": 0,
+                                      "access_token": token,
+                                      "v": apiVersion]
+        manager.request(urlString,
+                        method: .get,
+                        parameters: parameters,
+                        encoding: URLEncoding.default,
+                        headers: headers).validate()
+            .responseJSON { (response) in
+                
+                print("photos response = \(response)")
         }
     }
     

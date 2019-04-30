@@ -42,7 +42,8 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - LOAD
     
     func loadFriends() {
-        vkService.friends()
+        vkService.friends(withUserId: Session.shared.userId!)
+        vkService.photos(withOwnerId: Session.shared.userId!, album: .profile)
     }
     
     // MARK: - NAVIGATION
