@@ -80,9 +80,10 @@ extension AuthViewController: WKNavigationDelegate {
                 return dict
         }
         
-        if let token = params["access_token"] {
-            print("token = \(token)")
-            Session.shared.toket = token
+        if let token = params["access_token"], let userId = params["user_id"] {
+            print("token = \(token); userId = \(userId)")
+            Session.shared.token = token
+            Session.shared.userId = Int(userId)
             performSegue(withIdentifier: mainSegueIdentifier, sender: self)
         }
         
