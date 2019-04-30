@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D51812A62275A68800AB7AD8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51812A52275A68800AB7AD8 /* Session.swift */; };
 		D59FEEB6222A779000A55470 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEEB5222A779000A55470 /* AppDelegate.swift */; };
 		D59FEEB8222A779000A55470 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEEB7222A779000A55470 /* AuthViewController.swift */; };
 		D59FEEBB222A779000A55470 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D59FEEB9222A779000A55470 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D51812A52275A68800AB7AD8 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		D59FEEB2222A779000A55470 /* GeekbrainsLessons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeekbrainsLessons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D59FEEB5222A779000A55470 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D59FEEB7222A779000A55470 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D51812A42275A66400AB7AD8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D51812A52275A68800AB7AD8 /* Session.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		D59FEEA9222A779000A55470 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				D5A29E6A2232EDA200B5FEA2 /* View */,
+				D51812A42275A66400AB7AD8 /* Services */,
 				D5A29E712232F2F800B5FEA2 /* Common */,
 				D5A29E692232ED7D00B5FEA2 /* Storyboards */,
 				D5A29E682232ED2100B5FEA2 /* Supporting Files */,
@@ -192,6 +203,7 @@
 				TargetAttributes = {
 					D59FEEB1222A779000A55470 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -238,6 +250,7 @@
 				D5A29E702232F08100B5FEA2 /* FriendsTableViewCell.swift in Sources */,
 				D5A29E782232FE2200B5FEA2 /* GroupsTableViewCell.swift in Sources */,
 				D59FEEB6222A779000A55470 /* AppDelegate.swift in Sources */,
+				D51812A62275A68800AB7AD8 /* Session.swift in Sources */,
 				D5F0C95A222CFAF100E8C756 /* FriendsTableViewController.swift in Sources */,
 				D5F0C960222CFC9000E8C756 /* GroupsAddTableViewController.swift in Sources */,
 				D5A29E732232F32B00B5FEA2 /* Friend.swift in Sources */,
@@ -395,7 +408,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.oleg.bochkarev.GeekbrainsLessons;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -413,7 +426,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.oleg.bochkarev.GeekbrainsLessons;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -62,6 +62,11 @@ class AuthViewController: UIViewController {
             return
         }
         if login == "login" && password == "password" {
+            
+            let session = Session.shared
+            session.userId = 123
+            session.toket = "Token abc"
+            
             performSegue(withIdentifier: mainSegueIdentifier, sender: self)
         } else {
             showAlert(title: "Error", message: "Incorrect login or password")
