@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AlamofireNetworkActivityLogger
+import AlamofireNetworkActivityIndicator
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        defaultSetups()
         return true
     }
 
@@ -40,7 +42,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    // MARK: - DEFAULT SETUPS
+    
+    private func defaultSetups() {
+        NetworkActivityIndicatorManager.shared.isEnabled = true
+        NetworkActivityIndicatorManager.shared.startDelay = 0
+        NetworkActivityIndicatorManager.shared.completionDelay = 0.2
+        NetworkActivityLogger.shared.startLogging()
+        NetworkActivityLogger.shared.level = .debug
+    }
 
 }
 

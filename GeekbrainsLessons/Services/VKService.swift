@@ -52,7 +52,7 @@ final class VKService {
                                       "access_token": token,
                                       "v": apiVersion]
         manager.request(urlString,
-                        method: .post,
+                        method: .get,
                         parameters: parameters,
                         encoding: URLEncoding.default,
                         headers: headers).validate()
