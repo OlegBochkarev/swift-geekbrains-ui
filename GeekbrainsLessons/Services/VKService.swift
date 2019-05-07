@@ -78,7 +78,7 @@ final class VKService {
     
     //идентификатор владельца альбома.
     //у сообществ отрицательное число
-    func photos(withOwnerId ownerId: Int, album: PhotoAlbum = .profile) {
+    func photos(withOwnerId ownerId: Int, album: PhotoAlbum = .profile) -> Promise<[Photo]> {
         let urlString = serverURL + "photos.get"
         
         let parameters: Parameters = ["owner_id": ownerId,
@@ -88,9 +88,9 @@ final class VKService {
                                       "access_token": token,
                                       "v": apiVersion]
         
-        GET(urlString, parameters: parameters, responseType: FriendsResponseModel.self)
-        .done { responseModel in
-            
+        return GET(urlString, parameters: parameters, responseType: PhotosResponseModel.self)
+        .then { responseModel -> Promise<[Photo]> in
+            return .value(responseModel.items)
         }
     }
     
@@ -106,7 +106,7 @@ final class VKService {
         
         return GET(urlString, parameters: parameters, responseType: GroupsResponseModel.self)
         .then { responseModel -> Promise<[Group]> in
-                return .value(responseModel.items)
+            return .value(responseModel.items)
         }
     }
     //глобальный поиск групп
