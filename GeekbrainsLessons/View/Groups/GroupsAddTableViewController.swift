@@ -32,12 +32,7 @@ class GroupsAddTableViewController: UITableViewController {
     // MARK: - CONFIGURE
     
     func configure() {
-        let firstGroup = Group(name: "Group add 1", avatarColor: .green)
-        let secondGroup = Group(name: "Group add 2", avatarColor: .gray)
-        let thirdGroup = Group(name: "Group add 3", avatarColor: .black)
-        groups = [firstGroup, secondGroup, thirdGroup]
         
-        tableView.reloadData()
     }
 
     // MARK: - UITableViewDataSource
@@ -54,8 +49,7 @@ class GroupsAddTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! GroupsTableViewCell
         
         let group = groups[indexPath.row]
-        cell.nameLabel.text = group.name
-        cell.avatarView.backgroundColor = group.avatarColor
+        cell.model = group
         
         return cell
     }

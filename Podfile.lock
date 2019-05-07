@@ -4,23 +4,43 @@ PODS:
     - Alamofire (~> 4.8)
   - AlamofireNetworkActivityLogger (2.4.0):
     - Alamofire (~> 4.8)
+  - Kingfisher (5.4.0)
+  - PromiseKit (6.8.4):
+    - PromiseKit/CorePromise (= 6.8.4)
+    - PromiseKit/Foundation (= 6.8.4)
+    - PromiseKit/UIKit (= 6.8.4)
+  - PromiseKit/Alamofire (6.8.4):
+    - Alamofire (~> 4.0)
+    - PromiseKit/CorePromise
+  - PromiseKit/CorePromise (6.8.4)
+  - PromiseKit/Foundation (6.8.4):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.8.4):
+    - PromiseKit/CorePromise
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireNetworkActivityIndicator (~> 2.4)
   - AlamofireNetworkActivityLogger (~> 2.4)
+  - Kingfisher
+  - PromiseKit (~> 6.8)
+  - PromiseKit/Alamofire (~> 6.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireNetworkActivityIndicator
     - AlamofireNetworkActivityLogger
+    - Kingfisher
+    - PromiseKit
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireNetworkActivityIndicator: 9acc3de3ca6645bf0efed462396b0df13dd3e7b8
   AlamofireNetworkActivityLogger: 6d3398c692d2c5d83b0c58793537860aca1e383d
+  Kingfisher: 9c8f2cc6710334e06f32ba2b45e77707d5e2f0c9
+  PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
 
-PODFILE CHECKSUM: e7b086f571ee20c629d0056bab7d9b26562577d2
+PODFILE CHECKSUM: 7185199cc50e907b706642a6db071657f9af0f50
 
 COCOAPODS: 1.6.0

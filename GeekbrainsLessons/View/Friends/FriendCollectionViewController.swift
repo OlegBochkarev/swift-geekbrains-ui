@@ -8,46 +8,67 @@
 
 import UIKit
 
-class FriendCollectionViewController: UICollectionViewController {
+class FriendCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     // MARK: - PROPERTIES
     
-    var friend: Friend!
+    private let vkService = VKService(userId: Session.shared.userId!,
+                                      token: Session.shared.token!)
     
-    private let reuseIdentifier = "Cell"
+    var friend: User!
+    
+    var photos: [Photo] = []
+    
+    private let reuseIdentifier = "FriendCell"
     
     // MARK: - INIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = friend.name
+        title = friend.firstName
+        loadPhotos()
+    }
+    
+    // MARK: - LOAD
+    
+    func loadPhotos() {
+        vkService.photos(withOwnerId: friend.identifier)
+        .done { responseModels in
+            self.photos = responseModels
+            self.collectionView.reloadData()
+        }.catch { error in
+            print("loadPhotos error = \(error.localizedDescription)")
+        }
     }
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return photos.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FriendPhotoCollectionViewCell
     
-        // Configure the cell
+        cell.model = photos[indexPath.row]
     
         return cell
+    }
+    
+    // MARK: - UICollectionViewDelegateFlowLayout
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width * 0.5, height: 150)
     }
 
 }
