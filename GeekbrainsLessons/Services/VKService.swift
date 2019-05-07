@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import PromiseKit
 
 enum PhotoAlbum: String {
     case wall
@@ -46,22 +47,18 @@ final class VKService {
     
     // MARK: - PRIVATE
     
-    func GET(_ urlString: String, parameters: Parameters?) {
-        manager.request(urlString,
-                        method: .get,
-                        parameters: parameters,
-                        encoding: URLEncoding.default,
-                        headers: headers).validate()
-            .responseJSON { (response) in
-                
-                print("response = \(response)")
-        }
+    private func GET<T: Decodable>(_ urlString: String, parameters: Parameters?, responseType: T.Type) -> Promise<T> {
+        return manager.request(urlString,
+                               method: .get,
+                               parameters: parameters,
+                               encoding: URLEncoding.default,
+                               headers: headers).validate().responseDecodable(T.self)
     }
     
     // MARK: - PUBLIC
     
     //userId - любого пользователя в вк
-    func friends(withUserId userId: Int) {
+    func friends(withUserId userId: Int) -> Promise<[User]> {
         let urlString = serverURL + "friends.get"
         
         let parameters: Parameters = ["user_id": userId,
@@ -73,7 +70,10 @@ final class VKService {
                                       "access_token": token,
                                       "v": apiVersion]
         
-        GET(urlString, parameters: parameters)
+        return GET(urlString, parameters: parameters, responseType: FriendsResponseModel.self)
+        .then { responseModel -> Promise<[User]> in
+            return .value(responseModel.items)
+        }
     }
     
     //идентификатор владельца альбома.
@@ -88,7 +88,10 @@ final class VKService {
                                       "access_token": token,
                                       "v": apiVersion]
         
-        GET(urlString, parameters: parameters)
+        GET(urlString, parameters: parameters, responseType: FriendsResponseModel.self)
+        .done { responseModel in
+            
+        }
     }
     
     func groups(withUserId userId: Int) {
@@ -101,7 +104,10 @@ final class VKService {
                                       "access_token": token,
                                       "v": apiVersion]
         
-        GET(urlString, parameters: parameters)
+        GET(urlString, parameters: parameters, responseType: FriendsResponseModel.self)
+        .done { responseModel in
+                
+        }
     }
     //глобальный поиск групп
     func searchGroups(withQuery q: String) {
@@ -113,7 +119,10 @@ final class VKService {
                                       "access_token": token,
                                       "v": apiVersion]
         
-        GET(urlString, parameters: parameters)
+        GET(urlString, parameters: parameters, responseType: FriendsResponseModel.self)
+        .done { responseModel in
+            
+        }
     }
     
 }

@@ -12,7 +12,7 @@ class FriendCollectionViewController: UICollectionViewController {
     
     // MARK: - PROPERTIES
     
-    var friend: Friend!
+    var friend: User!
     
     private let reuseIdentifier = "Cell"
     
@@ -26,7 +26,7 @@ class FriendCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = friend.name
+        title = friend.firstName
     }
 
     // MARK: UICollectionViewDataSource

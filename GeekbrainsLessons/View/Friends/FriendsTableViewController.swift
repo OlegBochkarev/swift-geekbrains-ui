@@ -15,7 +15,7 @@ class FriendsTableViewController: UITableViewController {
     private let vkService = VKService(userId: Session.shared.userId!,
                                       token: Session.shared.token!)
     
-    var friends: [Friend] = []
+    var friends: [User] = []
     
     private let friendVCSegueIdentifier = "FriendVCSegueIdentifier"
     private let cellIdentifier = "FriendsCell"
@@ -26,33 +26,29 @@ class FriendsTableViewController: UITableViewController {
         super.viewDidLoad()
         configure()
         loadFriends()
-        loadPhotos()
     }
     
     // MARK: - CONFIGURE
     
     func configure() {
-        let firstFriend = Friend(name: "first friend", avatarColor: .yellow)
-        let secondFriend = Friend(name: "second friend", avatarColor: .green)
-        let thirdFriend = Friend(name: "third friend", avatarColor: .orange)
-        friends = [firstFriend, secondFriend, thirdFriend]
         
-        tableView.reloadData()
     }
     
     // MARK: - LOAD
     
     func loadFriends() {
         vkService.friends(withUserId: Session.shared.userId!)
-    }
-    
-    func loadPhotos() {
-        vkService.photos(withOwnerId: Session.shared.userId!, album: .profile)
+        .done { responseModels in
+            self.friends = responseModels
+            self.tableView.reloadData()
+        }.catch { error in
+            print("loadFriends error = \(error.localizedDescription)")
+        }
     }
     
     // MARK: - NAVIGATION
     
-    func showFriendProfile(_ friend: Friend) {
+    func showFriendProfile(_ friend: User) {
         performSegue(withIdentifier: friendVCSegueIdentifier, sender: self)
     }
     
@@ -79,8 +75,7 @@ class FriendsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FriendsTableViewCell
         
         let friend = friends[indexPath.row]
-        cell.nameLabel.text = friend.name
-        cell.avatarView.backgroundColor = friend.avatarColor
+        cell.model = friend
         
         return cell
     }

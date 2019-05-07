@@ -1,13 +1,17 @@
 platform :ios, '11.0'
 use_frameworks!
 
-def averia_pods
+def stage_pods
     #NETWORK
     pod 'Alamofire'
     pod 'AlamofireNetworkActivityLogger', '~> 2.4'
     pod 'AlamofireNetworkActivityIndicator', '~> 2.4'
+    pod 'Kingfisher'
+    #PROMISE
+    pod 'PromiseKit', '~> 6.8'
+    pod 'PromiseKit/Alamofire', '~> 6.0'
 end
 
 target 'GeekbrainsLessons' do
-    averia_pods
+    stage_pods
 end
