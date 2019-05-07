@@ -8,18 +8,30 @@
 
 import UIKit
 
-final class Group {
+final class Group: Decodable {
     
     // MARK: - PROPERTIES
     
-    var name: String = ""
-    var avatarColor: UIColor = .gray
+    let identifier: Int
+    let name: String?
+    let photo: String?
     
-    // MARK: - INIT
+    // MARK: - KEYS
     
-    init(name: String, avatarColor: UIColor) {
-        self.name = name
-        self.avatarColor = avatarColor
+    enum CodingKeys: String, CodingKey {
+        case identifier = "id"
+        case name
+        case photo = "photo_200"
+    }
+    
+    // MARK: - Decodable
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        identifier = try container.decode(Int.self, forKey: .identifier)
+        name = try? container.decode(String.self, forKey: .name)
+        photo = try? container.decode(String.self, forKey: .photo)
     }
     
 }

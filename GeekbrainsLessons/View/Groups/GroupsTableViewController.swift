@@ -26,29 +26,35 @@ class GroupsTableViewController: UITableViewController {
         super.viewDidLoad()
         configure()
         loadGroups()
-        loadGroups(withQuery: "аниме")
+//        loadGroups(withQuery: "аниме")
     }
     
     // MARK: - CONFIGURE
     
     func configure() {
-        let firstGroup = Group(name: "first group", avatarColor: .orange)
-        let secondGroup = Group(name: "second group", avatarColor: .red)
-        let thirdGroup = Group(name: "third group", avatarColor: .yellow)
-        let fourthGroup = Group(name: "fourth group", avatarColor: .orange)
-        groups = [firstGroup, secondGroup, thirdGroup, fourthGroup]
         
-        tableView.reloadData()
     }
     
     // MARK: - LOAD
     
     func loadGroups() {
         vkService.groups(withUserId: Session.shared.userId!)
+        .done { responseModels in
+            self.groups = responseModels
+            self.tableView.reloadData()
+        }.catch { error in
+            print("loadGroups error = \(error.localizedDescription)")
+        }
     }
     
     func loadGroups(withQuery q: String) {
         vkService.searchGroups(withQuery: q)
+        .done { responseModels in
+            self.groups = responseModels
+            self.tableView.reloadData()
+        }.catch { error in
+            print("loadGroups withQuery = \(q); error = \(error.localizedDescription)")
+        }
     }
     
     // MARK: - NAVIGATION
@@ -76,9 +82,8 @@ class GroupsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! GroupsTableViewCell
         
-        let friend = groups[indexPath.row]
-        cell.nameLabel.text = friend.name
-        cell.avatarView.backgroundColor = friend.avatarColor
+        let group = groups[indexPath.row]
+        cell.model = group
         
         return cell
     }

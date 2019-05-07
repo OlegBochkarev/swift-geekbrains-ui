@@ -94,7 +94,7 @@ final class VKService {
         }
     }
     
-    func groups(withUserId userId: Int) {
+    func groups(withUserId userId: Int) -> Promise<[Group]> {
         let urlString = serverURL + "groups.get"
         
         let parameters: Parameters = ["user_id": userId,
@@ -104,13 +104,13 @@ final class VKService {
                                       "access_token": token,
                                       "v": apiVersion]
         
-        GET(urlString, parameters: parameters, responseType: FriendsResponseModel.self)
-        .done { responseModel in
-                
+        return GET(urlString, parameters: parameters, responseType: GroupsResponseModel.self)
+        .then { responseModel -> Promise<[Group]> in
+                return .value(responseModel.items)
         }
     }
     //глобальный поиск групп
-    func searchGroups(withQuery q: String) {
+    func searchGroups(withQuery q: String) -> Promise<[Group]> {
         let urlString = serverURL + "groups.search"
         
         let parameters: Parameters = ["q": q,
@@ -119,9 +119,9 @@ final class VKService {
                                       "access_token": token,
                                       "v": apiVersion]
         
-        GET(urlString, parameters: parameters, responseType: FriendsResponseModel.self)
-        .done { responseModel in
-            
+        return GET(urlString, parameters: parameters, responseType: GroupsResponseModel.self)
+        .then { responseModel -> Promise<[Group]> in
+            return .value(responseModel.items)
         }
     }
     
