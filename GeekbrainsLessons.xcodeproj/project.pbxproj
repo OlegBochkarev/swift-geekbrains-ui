@@ -18,6 +18,8 @@
 		D52BF35722817169004A37A1 /* PhotosResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52BF35622817169004A37A1 /* PhotosResponseModel.swift */; };
 		D52BF35922817243004A37A1 /* FriendPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52BF35822817243004A37A1 /* FriendPhotoCollectionViewCell.swift */; };
 		D52BF35B2281764B004A37A1 /* PhotoSizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52BF35A2281764B004A37A1 /* PhotoSizeModel.swift */; };
+		D58AA152228AB778002215B6 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D58AA151228AB778002215B6 /* Authorization.storyboard */; };
+		D58AA155228AB9D1002215B6 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AA154228AB9D1002215B6 /* GlobalConstants.swift */; };
 		D59FEEB6222A779000A55470 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEEB5222A779000A55470 /* AppDelegate.swift */; };
 		D59FEEB8222A779000A55470 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEEB7222A779000A55470 /* AuthViewController.swift */; };
 		D59FEEBB222A779000A55470 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D59FEEB9222A779000A55470 /* Main.storyboard */; };
@@ -47,6 +49,8 @@
 		D52BF35622817169004A37A1 /* PhotosResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosResponseModel.swift; sourceTree = "<group>"; };
 		D52BF35822817243004A37A1 /* FriendPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		D52BF35A2281764B004A37A1 /* PhotoSizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSizeModel.swift; sourceTree = "<group>"; };
+		D58AA151228AB778002215B6 /* Authorization.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authorization.storyboard; sourceTree = "<group>"; };
+		D58AA154228AB9D1002215B6 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		D59FEEB2222A779000A55470 /* GeekbrainsLessons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeekbrainsLessons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D59FEEB5222A779000A55470 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D59FEEB7222A779000A55470 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +131,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		D58AA153228AB9C2002215B6 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D58AA154228AB9D1002215B6 /* GlobalConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		D59FEEA9222A779000A55470 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +160,7 @@
 		D59FEEB4222A779000A55470 /* GeekbrainsLessons */ = {
 			isa = PBXGroup;
 			children = (
+				D58AA153228AB9C2002215B6 /* Constants */,
 				D5A29E6A2232EDA200B5FEA2 /* View */,
 				D51812A42275A66400AB7AD8 /* Services */,
 				D515CBB022815D230029376B /* Entities */,
@@ -171,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				D59FEEB9222A779000A55470 /* Main.storyboard */,
+				D58AA151228AB778002215B6 /* Authorization.storyboard */,
 				D59FEEBE222A779200A55470 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -292,6 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D58AA152228AB778002215B6 /* Authorization.storyboard in Resources */,
 				D59FEEC0222A779200A55470 /* LaunchScreen.storyboard in Resources */,
 				D59FEEBD222A779200A55470 /* Assets.xcassets in Resources */,
 				D59FEEBB222A779000A55470 /* Main.storyboard in Resources */,
@@ -337,6 +352,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -347,6 +363,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -362,6 +379,7 @@
 			files = (
 				D515CBB422815D4F0029376B /* Photo.swift in Sources */,
 				D52BF35B2281764B004A37A1 /* PhotoSizeModel.swift in Sources */,
+				D58AA155228AB9D1002215B6 /* GlobalConstants.swift in Sources */,
 				D515CBB222815D440029376B /* User.swift in Sources */,
 				D515CBB622815D580029376B /* Group.swift in Sources */,
 				D59FEEB8222A779000A55470 /* AuthViewController.swift in Sources */,

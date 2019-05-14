@@ -42,11 +42,43 @@ class FriendsTableViewCell: UITableViewCell {
         lastNameLabel.text = model.lastName
         
         let avatarPlaceholder = UIImage(named: "friend_avatar_placeholder")
+        avatarImageView.image = avatarPlaceholder
         if let avatarURLString = model.photo, let avatarURL = URL(string: avatarURLString) {
-            avatarImageView.kf.setImage(with: avatarURL, placeholder: avatarPlaceholder)
-        } else {
-            avatarImageView.image = avatarPlaceholder
+            let filePath = self.getDocumentsDirectory().appendingPathComponent("\(avatarURL.hashValue).jpg").path
+            if FileManager.default.fileExists(atPath: filePath) {
+                print("has image with url = \(avatarURLString)")
+                avatarImageView.image = UIImage(contentsOfFile: filePath)
+            } else {
+                downloadImage(from: avatarURL)
+            }
+//            avatarImageView.kf.setImage(with: avatarURL, placeholder: avatarPlaceholder)
         }
+    }
+    
+    // MARK: - HELPERS
+    
+    func downloadImage(from url: URL) {
+        print("Download Started")
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async() { [weak self] in
+                self?.avatarImageView.image = UIImage(data: data)
+                if let filename = self?.getDocumentsDirectory().appendingPathComponent("\(url.hashValue).jpg") {
+                    try? data.write(to: filename)
+                }
+            }
+        }
+    }
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
     
 }

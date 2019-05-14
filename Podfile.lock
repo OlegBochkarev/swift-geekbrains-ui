@@ -17,6 +17,7 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.8.4):
     - PromiseKit/CorePromise
+  - SwiftKeychainWrapper (3.3.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - Kingfisher
   - PromiseKit (~> 6.8)
   - PromiseKit/Alamofire (~> 6.0)
+  - SwiftKeychainWrapper
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -33,6 +35,7 @@ SPEC REPOS:
     - AlamofireNetworkActivityLogger
     - Kingfisher
     - PromiseKit
+    - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -40,7 +43,8 @@ SPEC CHECKSUMS:
   AlamofireNetworkActivityLogger: 6d3398c692d2c5d83b0c58793537860aca1e383d
   Kingfisher: 9c8f2cc6710334e06f32ba2b45e77707d5e2f0c9
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
+  SwiftKeychainWrapper: ef5ad793bc0e08e24a5913f28345b8f7bc8e4123
 
-PODFILE CHECKSUM: 7185199cc50e907b706642a6db071657f9af0f50
+PODFILE CHECKSUM: a97ddd75dfbd977b0f7d6cb6d0e83d0a376b2569
 
 COCOAPODS: 1.6.0

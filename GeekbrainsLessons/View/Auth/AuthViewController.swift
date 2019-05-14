@@ -8,14 +8,13 @@
 
 import UIKit
 import WebKit
+import SwiftKeychainWrapper
 
 class AuthViewController: UIViewController {
     
     // MARK: - PROPERTIES
     
     @IBOutlet weak var webView: WKWebView!
-    
-    private let mainSegueIdentifier = "MainSegueIdentifier"
     
     // MARK: - INIT
     
@@ -79,12 +78,16 @@ extension AuthViewController: WKNavigationDelegate {
                 dict[key] = value
                 return dict
         }
-        
         if let token = params["access_token"], let userId = params["user_id"] {
-            print("token = \(token); userId = \(userId)")
+            KeychainWrapper.standard.set(token, forKey: GlobalConstants.KeychainKey.token)
+            
             Session.shared.token = token
             Session.shared.userId = Int(userId)
-            performSegue(withIdentifier: mainSegueIdentifier, sender: self)
+            UserDefaults.standard.set(Int(userId), forKey: GlobalConstants.UserDefaultsKey.userId)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateInitialViewController()!
+            present(vc, animated: true, completion: nil)
         }
         
         decisionHandler(.cancel)
