@@ -9,6 +9,7 @@
 import UIKit
 import AlamofireNetworkActivityLogger
 import AlamofireNetworkActivityIndicator
+import SwiftKeychainWrapper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         defaultSetups()
+        startApp()
         return true
     }
 
@@ -52,6 +54,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NetworkActivityLogger.shared.startLogging()
         NetworkActivityLogger.shared.level = .debug
     }
-
+    
+    private func startApp() {
+        let storyboardName: String
+        if userAuthorized() {
+            storyboardName = "Main"
+        } else {
+            storyboardName = "Authorization"
+        }
+        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window!.makeKeyAndVisible()
+        window!.rootViewController = storyboard.instantiateInitialViewController()
+    }
+    
+    func userAuthorized() -> Bool {
+        //это лишь пример. В реальности, конечно, здесь все может быть сложнее, и хранить токен в UserDefaults не стоит
+        if let token = KeychainWrapper.standard.string(forKey: GlobalConstants.KeychainKey.token),
+            let userId = UserDefaults.standard.value(forKey: GlobalConstants.UserDefaultsKey.userId) as? Int {
+            Session.shared.token = token
+            Session.shared.userId = userId
+            print("saved token = \(token)")
+            print("saved userId = \(userId)")
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }
 

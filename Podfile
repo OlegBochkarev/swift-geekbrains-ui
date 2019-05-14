@@ -10,6 +10,8 @@ def stage_pods
     #PROMISE
     pod 'PromiseKit', '~> 6.8'
     pod 'PromiseKit/Alamofire', '~> 6.0'
+    #SECURITY
+    pod 'SwiftKeychainWrapper'
 end
 
 target 'GeekbrainsLessons' do
