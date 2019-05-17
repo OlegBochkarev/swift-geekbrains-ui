@@ -58,9 +58,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func startApp() {
         let storyboardName: String
         if userAuthorized() {
-            storyboardName = "Main"
+            storyboardName = GlobalConstants.Storyboards.main
         } else {
-            storyboardName = "Authorization"
+            storyboardName = GlobalConstants.Storyboards.authorization
         }
         let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -69,7 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func userAuthorized() -> Bool {
-        //это лишь пример. В реальности, конечно, здесь все может быть сложнее, и хранить токен в UserDefaults не стоит
         if let token = KeychainWrapper.standard.string(forKey: GlobalConstants.KeychainKey.token),
             let userId = UserDefaults.standard.value(forKey: GlobalConstants.UserDefaultsKey.userId) as? Int {
             Session.shared.token = token

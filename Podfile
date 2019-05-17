@@ -12,6 +12,8 @@ def stage_pods
     pod 'PromiseKit/Alamofire', '~> 6.0'
     #SECURITY
     pod 'SwiftKeychainWrapper'
+    #DB
+    pod 'RealmSwift'
 end
 
 target 'GeekbrainsLessons' do

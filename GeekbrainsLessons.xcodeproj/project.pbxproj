@@ -29,6 +29,10 @@
 		D5A29E782232FE2200B5FEA2 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A29E772232FE2200B5FEA2 /* GroupsTableViewCell.swift */; };
 		D5B59A2C227827AD002188F6 /* VKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B59A2B227827AD002188F6 /* VKService.swift */; };
 		D5B59A2E22782DAC002188F6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B59A2D22782DAC002188F6 /* WebKit.framework */; };
+		D5D0F07E228E97DA007D0592 /* UserRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D0F07D228E97DA007D0592 /* UserRealmModel.swift */; };
+		D5D0F080228E983B007D0592 /* GroupRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D0F07F228E983B007D0592 /* GroupRealmModel.swift */; };
+		D5D0F082228E9876007D0592 /* PhotoRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D0F081228E9876007D0592 /* PhotoRealmModel.swift */; };
+		D5D0F084228E98CD007D0592 /* PhotoSizeRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D0F083228E98CD007D0592 /* PhotoSizeRealmModel.swift */; };
 		D5F0C95A222CFAF100E8C756 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C959222CFAF100E8C756 /* FriendsTableViewController.swift */; };
 		D5F0C95C222CFBFD00E8C756 /* FriendCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C95B222CFBFD00E8C756 /* FriendCollectionViewController.swift */; };
 		D5F0C95E222CFC6F00E8C756 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C95D222CFC6F00E8C756 /* GroupsTableViewController.swift */; };
@@ -62,6 +66,10 @@
 		D5A29E772232FE2200B5FEA2 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		D5B59A2B227827AD002188F6 /* VKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKService.swift; sourceTree = "<group>"; };
 		D5B59A2D22782DAC002188F6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		D5D0F07D228E97DA007D0592 /* UserRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRealmModel.swift; sourceTree = "<group>"; };
+		D5D0F07F228E983B007D0592 /* GroupRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRealmModel.swift; sourceTree = "<group>"; };
+		D5D0F081228E9876007D0592 /* PhotoRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRealmModel.swift; sourceTree = "<group>"; };
+		D5D0F083228E98CD007D0592 /* PhotoSizeRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSizeRealmModel.swift; sourceTree = "<group>"; };
 		D5F0C959222CFAF100E8C756 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		D5F0C95B222CFBFD00E8C756 /* FriendCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionViewController.swift; sourceTree = "<group>"; };
 		D5F0C95D222CFC6F00E8C756 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
@@ -102,11 +110,12 @@
 		D515CBB022815D230029376B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				D5D0F07C228E97C7007D0592 /* RealmModels */,
 				D515CBB72281645C0029376B /* ApiResponse */,
 				D515CBB122815D440029376B /* User.swift */,
+				D515CBB522815D580029376B /* Group.swift */,
 				D515CBB322815D4F0029376B /* Photo.swift */,
 				D52BF35A2281764B004A37A1 /* PhotoSizeModel.swift */,
-				D515CBB522815D580029376B /* Group.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -245,6 +254,17 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		D5D0F07C228E97C7007D0592 /* RealmModels */ = {
+			isa = PBXGroup;
+			children = (
+				D5D0F07D228E97DA007D0592 /* UserRealmModel.swift */,
+				D5D0F07F228E983B007D0592 /* GroupRealmModel.swift */,
+				D5D0F081228E9876007D0592 /* PhotoRealmModel.swift */,
+				D5D0F083228E98CD007D0592 /* PhotoSizeRealmModel.swift */,
+			);
+			path = RealmModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -352,6 +372,8 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -363,6 +385,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,11 +402,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D515CBB422815D4F0029376B /* Photo.swift in Sources */,
+				D5D0F07E228E97DA007D0592 /* UserRealmModel.swift in Sources */,
 				D52BF35B2281764B004A37A1 /* PhotoSizeModel.swift in Sources */,
+				D5D0F084228E98CD007D0592 /* PhotoSizeRealmModel.swift in Sources */,
 				D58AA155228AB9D1002215B6 /* GlobalConstants.swift in Sources */,
 				D515CBB222815D440029376B /* User.swift in Sources */,
 				D515CBB622815D580029376B /* Group.swift in Sources */,
 				D59FEEB8222A779000A55470 /* AuthViewController.swift in Sources */,
+				D5D0F080228E983B007D0592 /* GroupRealmModel.swift in Sources */,
 				D52BF35522816E6A004A37A1 /* GroupsResponseModel.swift in Sources */,
 				D5F0C95C222CFBFD00E8C756 /* FriendCollectionViewController.swift in Sources */,
 				D52BF35722817169004A37A1 /* PhotosResponseModel.swift in Sources */,
@@ -397,6 +424,7 @@
 				D5F0C95A222CFAF100E8C756 /* FriendsTableViewController.swift in Sources */,
 				D515CBB9228164E30029376B /* FriendsResponseModel.swift in Sources */,
 				D5F0C960222CFC9000E8C756 /* GroupsAddTableViewController.swift in Sources */,
+				D5D0F082228E9876007D0592 /* PhotoRealmModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

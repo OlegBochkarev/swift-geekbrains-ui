@@ -8,13 +8,18 @@
 
 import Foundation
 
-struct GlobalConstants {
+enum GlobalConstants {
     
-    struct KeychainKey {
+    enum Storyboards {
+        static let main = "Main"
+        static let authorization = "Authorization"
+    }
+    
+    enum KeychainKey {
         static let token = "vkToken"
     }
     
-    struct UserDefaultsKey {
+    enum UserDefaultsKey {
         static let userId = "UserIdentifier"
     }
     
