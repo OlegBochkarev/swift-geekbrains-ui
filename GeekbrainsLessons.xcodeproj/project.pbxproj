@@ -33,6 +33,7 @@
 		D5D0F080228E983B007D0592 /* GroupRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D0F07F228E983B007D0592 /* GroupRealmModel.swift */; };
 		D5D0F082228E9876007D0592 /* PhotoRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D0F081228E9876007D0592 /* PhotoRealmModel.swift */; };
 		D5D0F084228E98CD007D0592 /* PhotoSizeRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D0F083228E98CD007D0592 /* PhotoSizeRealmModel.swift */; };
+		D5E46D002291D04F0003E45C /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E46CFF2291D04F0003E45C /* RootRouter.swift */; };
 		D5F0C95A222CFAF100E8C756 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C959222CFAF100E8C756 /* FriendsTableViewController.swift */; };
 		D5F0C95C222CFBFD00E8C756 /* FriendCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C95B222CFBFD00E8C756 /* FriendCollectionViewController.swift */; };
 		D5F0C95E222CFC6F00E8C756 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0C95D222CFC6F00E8C756 /* GroupsTableViewController.swift */; };
@@ -70,6 +71,7 @@
 		D5D0F07F228E983B007D0592 /* GroupRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRealmModel.swift; sourceTree = "<group>"; };
 		D5D0F081228E9876007D0592 /* PhotoRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRealmModel.swift; sourceTree = "<group>"; };
 		D5D0F083228E98CD007D0592 /* PhotoSizeRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSizeRealmModel.swift; sourceTree = "<group>"; };
+		D5E46CFF2291D04F0003E45C /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		D5F0C959222CFAF100E8C756 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		D5F0C95B222CFBFD00E8C756 /* FriendCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionViewController.swift; sourceTree = "<group>"; };
 		D5F0C95D222CFC6F00E8C756 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				D58AA153228AB9C2002215B6 /* Constants */,
+				D5E46CFE2291D0310003E45C /* Router */,
 				D5A29E6A2232EDA200B5FEA2 /* View */,
 				D51812A42275A66400AB7AD8 /* Services */,
 				D515CBB022815D230029376B /* Entities */,
@@ -263,6 +266,14 @@
 				D5D0F083228E98CD007D0592 /* PhotoSizeRealmModel.swift */,
 			);
 			path = RealmModels;
+			sourceTree = "<group>";
+		};
+		D5E46CFE2291D0310003E45C /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				D5E46CFF2291D04F0003E45C /* RootRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D515CBB422815D4F0029376B /* Photo.swift in Sources */,
+				D5E46D002291D04F0003E45C /* RootRouter.swift in Sources */,
 				D5D0F07E228E97DA007D0592 /* UserRealmModel.swift in Sources */,
 				D52BF35B2281764B004A37A1 /* PhotoSizeModel.swift in Sources */,
 				D5D0F084228E98CD007D0592 /* PhotoSizeRealmModel.swift in Sources */,

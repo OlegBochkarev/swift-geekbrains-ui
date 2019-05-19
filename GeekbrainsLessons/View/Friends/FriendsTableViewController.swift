@@ -43,6 +43,11 @@ class FriendsTableViewController: UITableViewController {
             self.tableView.reloadData()
         }.catch { error in
             print("loadFriends error = \(error.localizedDescription)")
+            //делаем logout если получили ошибку.
+            //я понимаю, что на любую ошибку не нужно делать логаут, но сейчас иногда бывает,
+            //что токен уже не работает, и отличать эту ситуацию от прочих пока не хочется.
+            //для простоты возвращаюсь на экран авторизации
+            RootRouter().presentAuthorizationScreen()
         }
     }
     
