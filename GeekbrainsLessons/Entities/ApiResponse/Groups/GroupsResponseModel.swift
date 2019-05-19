@@ -13,7 +13,7 @@ final class GroupsResponseModel: Decodable {
     // MARK: - PROPERTIES
     
     let count: Int?
-    let items: [Group]
+    let items: [GroupResponseModel]
     
     // MARK: - KEYS
     
@@ -29,7 +29,7 @@ final class GroupsResponseModel: Decodable {
         let container = try baseContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .response)
         
         count = try container.decode(Int?.self, forKey: .count)
-        items = (try? container.decode([Group].self, forKey: .items)) ?? []
+        items = (try? container.decode([GroupResponseModel].self, forKey: .items)) ?? []
     }
     
 }

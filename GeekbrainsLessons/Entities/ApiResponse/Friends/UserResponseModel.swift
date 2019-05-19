@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class User: Decodable {
+final class UserResponseModel: Decodable {
     
     // MARK: - PROPERTIES
     

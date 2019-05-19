@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class Group: Decodable {
+final class GroupResponseModel: Decodable {
     
     // MARK: - PROPERTIES
     

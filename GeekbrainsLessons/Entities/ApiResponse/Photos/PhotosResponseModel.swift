@@ -13,7 +13,7 @@ final class PhotosResponseModel: Decodable {
     // MARK: - PROPERTIES
     
     let count: Int?
-    let items: [Photo]
+    let items: [PhotoResponseModel]
     
     // MARK: - KEYS
     
@@ -29,7 +29,7 @@ final class PhotosResponseModel: Decodable {
         let container = try baseContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .response)
         
         count = try container.decode(Int?.self, forKey: .count)
-        items = (try? container.decode([Photo].self, forKey: .items)) ?? []
+        items = (try? container.decode([PhotoResponseModel].self, forKey: .items)) ?? []
     }
     
 }

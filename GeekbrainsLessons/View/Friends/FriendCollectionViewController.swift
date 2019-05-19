@@ -17,7 +17,7 @@ class FriendCollectionViewController: UICollectionViewController, UICollectionVi
     
     var friend: User!
     
-    var photos: [Photo] = []
+    var photos: [PhotoResponseModel] = []
     
     private let reuseIdentifier = "FriendCell"
     

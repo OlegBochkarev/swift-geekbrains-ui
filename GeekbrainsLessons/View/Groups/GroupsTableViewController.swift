@@ -15,7 +15,7 @@ class GroupsTableViewController: UITableViewController {
     private let vkService = VKService(userId: Session.shared.userId!,
                                       token: Session.shared.token!)
     
-    var groups: [Group] = []
+    var groups: [GroupResponseModel] = []
     
     private let addGroupVCSegueIdentifier = "AddGroupVCSegueIdentifier"
     private let cellIdentifier = "GroupsCell"
@@ -118,7 +118,7 @@ class GroupsTableViewController: UITableViewController {
 // MARK: - GroupsAddTableViewControllerDelegate
 
 extension GroupsTableViewController: GroupsAddTableViewControllerDelegate {
-    func addGroup(_ group: Group) {
+    func addGroup(_ group: GroupResponseModel) {
         groups.append(group)
         tableView.reloadData()
     }

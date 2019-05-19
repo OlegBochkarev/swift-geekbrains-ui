@@ -20,5 +20,13 @@ final class UserRealmModel: Object {
     override static func primaryKey() -> String? {
         return "identifier"
     }
+    //этот метод добавлен для простоты
+    func update(withResponseModel responseModel: UserResponseModel) {
+        identifier = responseModel.identifier
+        firstName = responseModel.firstName
+        lastName = responseModel.lastName
+        domain = responseModel.domain
+        photo = responseModel.photo
+    }
     
 }

@@ -14,6 +14,7 @@ class FriendsTableViewController: UITableViewController {
     
     private let vkService = VKService(userId: Session.shared.userId!,
                                       token: Session.shared.token!)
+    private let dataStorage: DataStorageProtocol = DataStorage.shared
     
     var friends: [User] = []
     
@@ -39,7 +40,8 @@ class FriendsTableViewController: UITableViewController {
     func loadFriends() {
         vkService.friends(withUserId: Session.shared.userId!)
         .done { responseModels in
-            self.friends = responseModels
+            try self.dataStorage.saveFriends(responseModels)
+            self.friends = self.dataStorage.fetchFriends()
             self.tableView.reloadData()
         }.catch { error in
             print("loadFriends error = \(error.localizedDescription)")
