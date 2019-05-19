@@ -14,10 +14,11 @@ class FriendCollectionViewController: UICollectionViewController, UICollectionVi
     
     private let vkService = VKService(userId: Session.shared.userId!,
                                       token: Session.shared.token!)
+    private let dataStorage: DataStorageProtocol = DataStorage.shared
     
     var friend: User!
     
-    var photos: [PhotoResponseModel] = []
+    var photos: [Photo] = []
     
     private let reuseIdentifier = "FriendCell"
     
@@ -38,9 +39,11 @@ class FriendCollectionViewController: UICollectionViewController, UICollectionVi
     // MARK: - LOAD
     
     func loadPhotos() {
-        vkService.photos(withOwnerId: friend.identifier)
+        let ownerId = friend.identifier
+        vkService.photos(withOwnerId: ownerId)
         .done { responseModels in
-            self.photos = responseModels
+            try self.dataStorage.savePhotos(responseModels)
+            self.photos = self.dataStorage.fetchPhotos(withOwnerId: ownerId)
             self.collectionView.reloadData()
         }.catch { error in
             print("loadPhotos error = \(error.localizedDescription)")

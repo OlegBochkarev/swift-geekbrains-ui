@@ -57,6 +57,33 @@ extension DataStorage: DataStorageProtocol {
         }
     }
     
+    func savePhotos(_ photos: [PhotoResponseModel]) throws {
+        if photos.isEmpty {
+            return
+        }
+        var photosRealmModels: [PhotoRealmModel] = []
+        for photo in photos {
+            let photoRealmModel = PhotoRealmModel()
+            photoRealmModel.identifier = photo.identifier
+            photoRealmModel.ownerId = photo.ownerId
+            photoRealmModel.userId = photo.userId
+            for photoSize in photo.sizes {
+                let sizeRealmModel = PhotoSizeRealmModel()
+                sizeRealmModel.identifier = "\(photo.identifier)+\(photoSize.width)+\(photoSize.height)"
+                sizeRealmModel.type = photoSize.type
+                sizeRealmModel.url = photoSize.url
+                sizeRealmModel.width = photoSize.width
+                sizeRealmModel.height = photoSize.height
+                photoRealmModel.sizes.append(sizeRealmModel)
+            }
+            photosRealmModels.append(photoRealmModel)
+        }
+        let realm = try Realm()
+        try realm.write {
+            realm.add(photosRealmModels, update: true)
+        }
+    }
+    
     // MARK: - FETCH
     
     func fetchFriends() -> [User] {
@@ -79,6 +106,17 @@ extension DataStorage: DataStorageProtocol {
             groups.append(group)
         }
         return groups
+    }
+    
+    func fetchPhotos(withOwnerId ownerId: Int) -> [Photo] {
+        let realm = try! Realm()
+        let photosRealmModel = realm.objects(PhotoRealmModel.self).filter("ownerId = %d", ownerId)
+        var photos: [Photo] = []
+        for photoRealmModel in photosRealmModel {
+            let photo = Photo(realmModel: photoRealmModel)
+            photos.append(photo)
+        }
+        return photos
     }
     
     // MARK: - DELETE

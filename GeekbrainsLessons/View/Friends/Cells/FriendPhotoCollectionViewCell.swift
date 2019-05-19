@@ -15,7 +15,7 @@ class FriendPhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var photoImageView: UIImageView!
     
-    var model: PhotoResponseModel? {
+    var model: Photo? {
         didSet {
             updateViews()
         }
