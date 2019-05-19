@@ -19,4 +19,10 @@ final class GroupRealmModel: Object {
         return "identifier"
     }
     
+    //этот метод добавлен для простоты
+    func update(withResponseModel responseModel: GroupResponseModel) {
+        identifier = responseModel.identifier
+        name = responseModel.name
+        photo = responseModel.photo
+    }
 }

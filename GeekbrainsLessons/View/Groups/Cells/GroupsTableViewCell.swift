@@ -16,7 +16,7 @@ class GroupsTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     
-    var model: GroupResponseModel? {
+    var model: Group? {
         didSet {
             updateViews()
         }

@@ -9,14 +9,14 @@
 import UIKit
 
 protocol GroupsAddTableViewControllerDelegate: class {
-    func addGroup(_ group: GroupResponseModel)
+    func addGroup(_ group: Group)
 }
 
 class GroupsAddTableViewController: UITableViewController {
     
     // MARK: - PROPERTIES
     
-    var groups: [GroupResponseModel] = []
+    var groups: [Group] = []
     
     weak var delegate: GroupsAddTableViewControllerDelegate?
     

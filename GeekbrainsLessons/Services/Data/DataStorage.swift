@@ -41,6 +41,22 @@ extension DataStorage: DataStorageProtocol {
         }
     }
     
+    func saveGroups(_ groups: [GroupResponseModel]) throws {
+        if groups.isEmpty {
+            return
+        }
+        var groupsRealmModels: [GroupRealmModel] = []
+        for group in groups {
+            let groupRealmModel = GroupRealmModel()
+            groupRealmModel.update(withResponseModel: group)
+            groupsRealmModels.append(groupRealmModel)
+        }
+        let realm = try Realm()
+        try realm.write {
+            realm.add(groupsRealmModels, update: true)
+        }
+    }
+    
     // MARK: - FETCH
     
     func fetchFriends() -> [User] {
@@ -52,6 +68,17 @@ extension DataStorage: DataStorageProtocol {
             friends.append(friend)
         }
         return friends
+    }
+    
+    func fetchGroups() -> [Group] {
+        let realm = try! Realm()
+        let groupsRealmModel = realm.objects(GroupRealmModel.self)
+        var groups: [Group] = []
+        for groupRealmModel in groupsRealmModel {
+            let group = Group(realmModel: groupRealmModel)
+            groups.append(group)
+        }
+        return groups
     }
     
     // MARK: - DELETE

@@ -10,8 +10,10 @@ import Foundation
 
 protocol DataStorageProtocol: class {
     func saveFriends(_ friends: [UserResponseModel]) throws
+    func saveGroups(_ groups: [GroupResponseModel]) throws
     
     func fetchFriends() -> [User]
+    func fetchGroups() -> [Group]
     
     func deleteAll()
 }

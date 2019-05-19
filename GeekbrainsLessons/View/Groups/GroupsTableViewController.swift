@@ -14,8 +14,9 @@ class GroupsTableViewController: UITableViewController {
     
     private let vkService = VKService(userId: Session.shared.userId!,
                                       token: Session.shared.token!)
+    private let dataStorage: DataStorageProtocol = DataStorage.shared
     
-    var groups: [GroupResponseModel] = []
+    var groups: [Group] = []
     
     private let addGroupVCSegueIdentifier = "AddGroupVCSegueIdentifier"
     private let cellIdentifier = "GroupsCell"
@@ -40,7 +41,8 @@ class GroupsTableViewController: UITableViewController {
     func loadGroups() {
         vkService.groups(withUserId: Session.shared.userId!)
         .done { responseModels in
-            self.groups = responseModels
+            try self.dataStorage.saveGroups(responseModels)
+            self.groups = self.dataStorage.fetchGroups()
             self.tableView.reloadData()
         }.catch { error in
             print("loadGroups error = \(error.localizedDescription)")
@@ -50,7 +52,13 @@ class GroupsTableViewController: UITableViewController {
     func loadGroups(withQuery q: String) {
         vkService.searchGroups(withQuery: q)
         .done { responseModels in
-            self.groups = responseModels
+            //я не думаю, что такие запросы нужно сохранять
+            var groups: [Group] = []
+            for responseModel in responseModels {
+                let group = Group(responseModel: responseModel)
+                groups.append(group)
+            }
+            self.groups = groups
             self.tableView.reloadData()
         }.catch { error in
             print("loadGroups withQuery = \(q); error = \(error.localizedDescription)")
@@ -118,7 +126,7 @@ class GroupsTableViewController: UITableViewController {
 // MARK: - GroupsAddTableViewControllerDelegate
 
 extension GroupsTableViewController: GroupsAddTableViewControllerDelegate {
-    func addGroup(_ group: GroupResponseModel) {
+    func addGroup(_ group: Group) {
         groups.append(group)
         tableView.reloadData()
     }
