@@ -88,34 +88,19 @@ extension DataStorage: DataStorageProtocol {
     
     func fetchFriends() -> [User] {
         let realm = try! Realm()
-        let usersRealmModel = realm.objects(UserRealmModel.self)
-        var friends: [User] = []
-        for userRealmModel in usersRealmModel {
-            let friend = User(realmModel: userRealmModel)
-            friends.append(friend)
-        }
+        let friends: [User] = realm.objects(UserRealmModel.self).map({ User(realmModel: $0) })
         return friends
     }
     
     func fetchGroups() -> [Group] {
         let realm = try! Realm()
-        let groupsRealmModel = realm.objects(GroupRealmModel.self)
-        var groups: [Group] = []
-        for groupRealmModel in groupsRealmModel {
-            let group = Group(realmModel: groupRealmModel)
-            groups.append(group)
-        }
+        let groups: [Group] = realm.objects(GroupRealmModel.self).map({ Group(realmModel: $0) })
         return groups
     }
     
     func fetchPhotos(withOwnerId ownerId: Int) -> [Photo] {
         let realm = try! Realm()
-        let photosRealmModel = realm.objects(PhotoRealmModel.self).filter("ownerId = %d", ownerId)
-        var photos: [Photo] = []
-        for photoRealmModel in photosRealmModel {
-            let photo = Photo(realmModel: photoRealmModel)
-            photos.append(photo)
-        }
+        let photos: [Photo] = realm.objects(PhotoRealmModel.self).filter("ownerId = %d", ownerId).map({ Photo(realmModel: $0) })
         return photos
     }
     
