@@ -8,14 +8,14 @@
 
 import Foundation
 
-final class Photo: Decodable {
+final class PhotoResponseModel: Decodable {
     
     // MARK: - PROPERTIES
     
     let identifier: Int
     let ownerId: Int
     let userId: Int
-    let sizes: [PhotoSizeModel]
+    let sizes: [PhotoSizeResponseModel]
     
     // MARK: - KEYS
     
@@ -34,7 +34,7 @@ final class Photo: Decodable {
         identifier = try container.decode(Int.self, forKey: .identifier)
         ownerId = (try? container.decode(Int.self, forKey: .ownerId)) ?? -1
         userId = (try? container.decode(Int.self, forKey: .userId)) ?? -1
-        sizes = (try? container.decode([PhotoSizeModel].self, forKey: .sizes)) ?? []
+        sizes = (try? container.decode([PhotoSizeResponseModel].self, forKey: .sizes)) ?? []
     }
     
 }

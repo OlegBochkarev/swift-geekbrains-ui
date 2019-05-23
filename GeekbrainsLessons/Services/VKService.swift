@@ -58,7 +58,7 @@ final class VKService {
     // MARK: - PUBLIC
     
     //userId - любого пользователя в вк
-    func friends(withUserId userId: Int) -> Promise<[User]> {
+    func friends(withUserId userId: Int) -> Promise<[UserResponseModel]> {
         let urlString = serverURL + "friends.get"
         
         let parameters: Parameters = ["user_id": userId,
@@ -71,14 +71,14 @@ final class VKService {
                                       "v": apiVersion]
         
         return GET(urlString, parameters: parameters, responseType: FriendsResponseModel.self)
-        .then { responseModel -> Promise<[User]> in
+        .then { responseModel -> Promise<[UserResponseModel]> in
             return .value(responseModel.items)
         }
     }
     
     //идентификатор владельца альбома.
     //у сообществ отрицательное число
-    func photos(withOwnerId ownerId: Int, album: PhotoAlbum = .profile) -> Promise<[Photo]> {
+    func photos(withOwnerId ownerId: Int, album: PhotoAlbum = .profile) -> Promise<[PhotoResponseModel]> {
         let urlString = serverURL + "photos.get"
         
         let parameters: Parameters = ["owner_id": ownerId,
@@ -89,12 +89,12 @@ final class VKService {
                                       "v": apiVersion]
         
         return GET(urlString, parameters: parameters, responseType: PhotosResponseModel.self)
-        .then { responseModel -> Promise<[Photo]> in
+        .then { responseModel -> Promise<[PhotoResponseModel]> in
             return .value(responseModel.items)
         }
     }
     
-    func groups(withUserId userId: Int) -> Promise<[Group]> {
+    func groups(withUserId userId: Int) -> Promise<[GroupResponseModel]> {
         let urlString = serverURL + "groups.get"
         
         let parameters: Parameters = ["user_id": userId,
@@ -105,12 +105,12 @@ final class VKService {
                                       "v": apiVersion]
         
         return GET(urlString, parameters: parameters, responseType: GroupsResponseModel.self)
-        .then { responseModel -> Promise<[Group]> in
+        .then { responseModel -> Promise<[GroupResponseModel]> in
             return .value(responseModel.items)
         }
     }
     //глобальный поиск групп
-    func searchGroups(withQuery q: String) -> Promise<[Group]> {
+    func searchGroups(withQuery q: String) -> Promise<[GroupResponseModel]> {
         let urlString = serverURL + "groups.search"
         
         let parameters: Parameters = ["q": q,
@@ -120,7 +120,7 @@ final class VKService {
                                       "v": apiVersion]
         
         return GET(urlString, parameters: parameters, responseType: GroupsResponseModel.self)
-        .then { responseModel -> Promise<[Group]> in
+        .then { responseModel -> Promise<[GroupResponseModel]> in
             return .value(responseModel.items)
         }
     }

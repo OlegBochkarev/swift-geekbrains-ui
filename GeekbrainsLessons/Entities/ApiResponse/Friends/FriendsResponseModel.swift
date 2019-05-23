@@ -13,7 +13,7 @@ final class FriendsResponseModel: Decodable {
     // MARK: - PROPERTIES
     
     let count: Int?
-    let items: [User]
+    let items: [UserResponseModel]
     
     // MARK: - KEYS
     
@@ -29,7 +29,7 @@ final class FriendsResponseModel: Decodable {
         let container = try baseContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .response)
         
         count = try container.decode(Int?.self, forKey: .count)
-        items = (try? container.decode([User].self, forKey: .items)) ?? []
+        items = (try? container.decode([UserResponseModel].self, forKey: .items)) ?? []
     }
     
 }

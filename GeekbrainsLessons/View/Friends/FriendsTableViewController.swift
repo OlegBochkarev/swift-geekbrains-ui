@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FriendsTableViewController: UITableViewController {
     
@@ -14,8 +15,10 @@ class FriendsTableViewController: UITableViewController {
     
     private let vkService = VKService(userId: Session.shared.userId!,
                                       token: Session.shared.token!)
+    private let dataStorage: DataStorageProtocol = DataStorage.shared
     
     var friends: [User] = []
+    var friendsToken: NotificationToken?
     
     private let friendVCSegueIdentifier = "FriendVCSegueIdentifier"
     private let cellIdentifier = "FriendsCell"
@@ -31,7 +34,29 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - CONFIGURE
     
     func configure() {
+        let friendsResult = dataStorage.fetchFriends()
+        friends = friendsResult.map({ User(realmModel: $0) })
+        tableView.reloadData()
         
+        friendsToken = friendsResult.observe { [weak self] changes in
+            switch changes {
+            case .initial(let results):
+                print("initial \(results)")
+                self?.friends = results.map({ User(realmModel: $0) })
+                self?.tableView.reloadData()
+            case let .update(results, deletions, insertions, modifications):
+                print("update \(results)")
+                self?.friends = results.map({ User(realmModel: $0) })
+                self?.tableView.performBatchUpdates({
+                    self?.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
+                    self?.tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                    self?.tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
+                }, completion: nil)
+            case .error(let error):
+                print(error)
+            }
+            print("данные изменились")
+        }
     }
     
     // MARK: - LOAD
@@ -39,10 +64,14 @@ class FriendsTableViewController: UITableViewController {
     func loadFriends() {
         vkService.friends(withUserId: Session.shared.userId!)
         .done { responseModels in
-            self.friends = responseModels
-            self.tableView.reloadData()
+            try self.dataStorage.saveFriends(responseModels)
         }.catch { error in
             print("loadFriends error = \(error.localizedDescription)")
+            //делаем logout если получили ошибку.
+            //я понимаю, что на любую ошибку не нужно делать логаут, но сейчас иногда бывает,
+            //что токен уже не работает, и отличать эту ситуацию от прочих пока не хочется.
+            //для простоты возвращаюсь на экран авторизации
+            RootRouter().presentAuthorizationScreen()
         }
     }
     
