@@ -86,10 +86,11 @@ extension DataStorage: DataStorageProtocol {
     
     // MARK: - FETCH
     
-    func fetchFriends() -> [User] {
+    func fetchFriends() -> Results<UserRealmModel> {
         let realm = try! Realm()
-        let friends: [User] = realm.objects(UserRealmModel.self).map({ User(realmModel: $0) })
-        return friends
+        return realm.objects(UserRealmModel.self)
+//        let friends: [User] = realm.objects(UserRealmModel.self).map({ User(realmModel: $0) })
+//        return friends
     }
     
     func fetchGroups() -> [Group] {

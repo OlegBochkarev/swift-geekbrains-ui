@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FriendsTableViewController: UITableViewController {
     
@@ -17,6 +18,7 @@ class FriendsTableViewController: UITableViewController {
     private let dataStorage: DataStorageProtocol = DataStorage.shared
     
     var friends: [User] = []
+    var friendsToken: NotificationToken?
     
     private let friendVCSegueIdentifier = "FriendVCSegueIdentifier"
     private let cellIdentifier = "FriendsCell"
@@ -32,7 +34,26 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - CONFIGURE
     
     func configure() {
-        
+        let friendsResult = self.dataStorage.fetchFriends()
+        friendsToken = friendsResult.observe { [weak self] changes in
+            switch changes {
+            case .initial(let results):
+                print("initial")
+                self?.friends = results.map({ User(realmModel: $0) })
+                self?.tableView.reloadData()
+            case let .update(results, deletions, insertions, modifications):
+                print("update")
+                self?.friends = results.map({ User(realmModel: $0) })
+                self?.tableView.performBatchUpdates({
+                    self?.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
+                    self?.tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                    self?.tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
+                }, completion: nil)
+            case .error(let error):
+                print(error)
+            }
+            print("данные изменились")
+        }
     }
     
     // MARK: - LOAD
@@ -41,8 +62,6 @@ class FriendsTableViewController: UITableViewController {
         vkService.friends(withUserId: Session.shared.userId!)
         .done { responseModels in
             try self.dataStorage.saveFriends(responseModels)
-            self.friends = self.dataStorage.fetchFriends()
-            self.tableView.reloadData()
         }.catch { error in
             print("loadFriends error = \(error.localizedDescription)")
             //делаем logout если получили ошибку.

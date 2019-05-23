@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol DataStorageProtocol: class {
     func saveFriends(_ friends: [UserResponseModel]) throws
     func saveGroups(_ groups: [GroupResponseModel]) throws
     func savePhotos(_ photos: [PhotoResponseModel]) throws
     
-    func fetchFriends() -> [User]
+    func fetchFriends() -> Results<UserRealmModel> // [User]
     func fetchGroups() -> [Group]
     func fetchPhotos(withOwnerId ownerId: Int) -> [Photo]
     
