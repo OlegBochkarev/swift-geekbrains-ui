@@ -100,10 +100,11 @@ extension DataStorage: DataStorageProtocol {
 //        return groups
     }
     
-    func fetchPhotos(withOwnerId ownerId: Int) -> [Photo] {
+    func fetchPhotos(withOwnerId ownerId: Int) -> Results<PhotoRealmModel> {
         let realm = try! Realm()
-        let photos: [Photo] = realm.objects(PhotoRealmModel.self).filter("ownerId = %d", ownerId).map({ Photo(realmModel: $0) })
-        return photos
+        return realm.objects(PhotoRealmModel.self).filter("ownerId = %d", ownerId)
+//        let photos: [Photo] = realm.objects(PhotoRealmModel.self).filter("ownerId = %d", ownerId).map({ Photo(realmModel: $0) })
+//        return photos
     }
     
     // MARK: - DELETE

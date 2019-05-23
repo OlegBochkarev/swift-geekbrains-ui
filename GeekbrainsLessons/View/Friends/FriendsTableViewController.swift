@@ -34,7 +34,7 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - CONFIGURE
     
     func configure() {
-        let friendsResult = self.dataStorage.fetchFriends()
+        let friendsResult = dataStorage.fetchFriends()
         friends = friendsResult.map({ User(realmModel: $0) })
         tableView.reloadData()
         

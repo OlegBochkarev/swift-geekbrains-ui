@@ -35,7 +35,7 @@ class GroupsTableViewController: UITableViewController {
     // MARK: - CONFIGURE
     
     func configure() {
-        let groupsResult = self.dataStorage.fetchGroups()
+        let groupsResult = dataStorage.fetchGroups()
         groups = groupsResult.map({ Group(realmModel: $0) })
         tableView.reloadData()
         

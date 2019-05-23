@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FriendCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -19,6 +20,7 @@ class FriendCollectionViewController: UICollectionViewController, UICollectionVi
     var friend: User!
     
     var photos: [Photo] = []
+    var photosToken: NotificationToken?
     
     private let reuseIdentifier = "FriendCell"
     
@@ -26,8 +28,7 @@ class FriendCollectionViewController: UICollectionViewController, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Register cell classes
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        configure()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,15 +37,42 @@ class FriendCollectionViewController: UICollectionViewController, UICollectionVi
         loadPhotos()
     }
     
+    // MARK: - CONFIGURE
+    
+    func configure() {
+        let photosResult = dataStorage.fetchPhotos(withOwnerId: friend.identifier)
+        photos = photosResult.map({ Photo(realmModel: $0) })
+        collectionView.reloadData()
+
+        photosToken = photosResult.observe { [weak self] changes in
+            switch changes {
+            case .initial(let results):
+                print("initial \(results)")
+                self?.photos = results.map({ Photo(realmModel: $0) })
+                self?.collectionView.reloadData()
+            case let .update(results, deletions, insertions, modifications):
+                print("update \(results)")
+                self?.photos = results.map({ Photo(realmModel: $0) })
+                self?.collectionView.performBatchUpdates({
+                    self?.collectionView.insertItems(at: insertions.map({ IndexPath(row: $0, section: 0) }) )
+                    self?.collectionView.deleteItems(at: deletions.map({ IndexPath(row: $0, section: 0)}) )
+                    self?.collectionView.reloadItems(at: modifications.map({ IndexPath(row: $0, section: 0) }) )
+                }, completion: nil)
+            case .error(let error):
+                print(error)
+            }
+            print("данные изменились")
+        }
+    }
+    
     // MARK: - LOAD
     
     func loadPhotos() {
+        print("loadPhotos")
         let ownerId = friend.identifier
         vkService.photos(withOwnerId: ownerId)
         .done { responseModels in
             try self.dataStorage.savePhotos(responseModels)
-            self.photos = self.dataStorage.fetchPhotos(withOwnerId: ownerId)
-            self.collectionView.reloadData()
         }.catch { error in
             print("loadPhotos error = \(error.localizedDescription)")
         }
