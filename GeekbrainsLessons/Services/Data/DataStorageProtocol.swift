@@ -15,7 +15,7 @@ protocol DataStorageProtocol: class {
     func savePhotos(_ photos: [PhotoResponseModel]) throws
     
     func fetchFriends() -> Results<UserRealmModel> // [User]
-    func fetchGroups() -> [Group]
+    func fetchGroups() -> Results<GroupRealmModel> //[Group]
     func fetchPhotos(withOwnerId ownerId: Int) -> [Photo]
     
     func deleteAll()

@@ -93,10 +93,11 @@ extension DataStorage: DataStorageProtocol {
 //        return friends
     }
     
-    func fetchGroups() -> [Group] {
+    func fetchGroups() -> Results<GroupRealmModel> {
         let realm = try! Realm()
-        let groups: [Group] = realm.objects(GroupRealmModel.self).map({ Group(realmModel: $0) })
-        return groups
+        return realm.objects(GroupRealmModel.self)
+//        let groups: [Group] = realm.objects(GroupRealmModel.self).map({ Group(realmModel: $0) })
+//        return groups
     }
     
     func fetchPhotos(withOwnerId ownerId: Int) -> [Photo] {

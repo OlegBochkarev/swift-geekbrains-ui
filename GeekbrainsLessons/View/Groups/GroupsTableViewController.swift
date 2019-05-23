@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class GroupsTableViewController: UITableViewController {
     
@@ -17,6 +18,7 @@ class GroupsTableViewController: UITableViewController {
     private let dataStorage: DataStorageProtocol = DataStorage.shared
     
     var groups: [Group] = []
+    var groupsToken: NotificationToken?
     
     private let addGroupVCSegueIdentifier = "AddGroupVCSegueIdentifier"
     private let cellIdentifier = "GroupsCell"
@@ -33,17 +35,38 @@ class GroupsTableViewController: UITableViewController {
     // MARK: - CONFIGURE
     
     func configure() {
+        let groupsResult = self.dataStorage.fetchGroups()
+        groups = groupsResult.map({ Group(realmModel: $0) })
+        tableView.reloadData()
         
+        groupsToken = groupsResult.observe { [weak self] changes in
+            switch changes {
+            case .initial(let results):
+                print("initial groups")
+                self?.groups = results.map({ Group(realmModel: $0) })
+                self?.tableView.reloadData()
+            case let .update(results, deletions, insertions, modifications):
+                print("update groups")
+                self?.groups = results.map({ Group(realmModel: $0) })
+                self?.tableView.performBatchUpdates({
+                    self?.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
+                    self?.tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                    self?.tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
+                }, completion: nil)
+            case .error(let error):
+                print(error)
+            }
+            print("Groups данные изменились")
+        }
     }
     
     // MARK: - LOAD
     
     func loadGroups() {
+        print("loadGroups")
         vkService.groups(withUserId: Session.shared.userId!)
         .done { responseModels in
             try self.dataStorage.saveGroups(responseModels)
-            self.groups = self.dataStorage.fetchGroups()
-            self.tableView.reloadData()
         }.catch { error in
             print("loadGroups error = \(error.localizedDescription)")
         }

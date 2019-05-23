@@ -35,14 +35,17 @@ class FriendsTableViewController: UITableViewController {
     
     func configure() {
         let friendsResult = self.dataStorage.fetchFriends()
+        friends = friendsResult.map({ User(realmModel: $0) })
+        tableView.reloadData()
+        
         friendsToken = friendsResult.observe { [weak self] changes in
             switch changes {
             case .initial(let results):
-                print("initial")
+                print("initial \(results)")
                 self?.friends = results.map({ User(realmModel: $0) })
                 self?.tableView.reloadData()
             case let .update(results, deletions, insertions, modifications):
-                print("update")
+                print("update \(results)")
                 self?.friends = results.map({ User(realmModel: $0) })
                 self?.tableView.performBatchUpdates({
                     self?.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
