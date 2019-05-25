@@ -14,6 +14,10 @@ def stage_pods
     pod 'SwiftKeychainWrapper'
     #DB
     pod 'RealmSwift'
+    #FIREBASE
+    pod 'Firebase/Analytics'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Database'
 end
 
 target 'GeekbrainsLessons' do

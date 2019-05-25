@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,7 @@
 		D52BF35722817169004A37A1 /* PhotosResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52BF35622817169004A37A1 /* PhotosResponseModel.swift */; };
 		D52BF35922817243004A37A1 /* FriendPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52BF35822817243004A37A1 /* FriendPhotoCollectionViewCell.swift */; };
 		D52BF35B2281764B004A37A1 /* PhotoSizeResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52BF35A2281764B004A37A1 /* PhotoSizeResponseModel.swift */; };
+		D580C90E22991FF40092CDD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D580C90D22991FF40092CDD5 /* GoogleService-Info.plist */; };
 		D58AA152228AB778002215B6 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D58AA151228AB778002215B6 /* Authorization.storyboard */; };
 		D58AA155228AB9D1002215B6 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AA154228AB9D1002215B6 /* GlobalConstants.swift */; };
 		D59FEEB6222A779000A55470 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEEB5222A779000A55470 /* AppDelegate.swift */; };
@@ -60,6 +61,7 @@
 		D52BF35622817169004A37A1 /* PhotosResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosResponseModel.swift; sourceTree = "<group>"; };
 		D52BF35822817243004A37A1 /* FriendPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		D52BF35A2281764B004A37A1 /* PhotoSizeResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSizeResponseModel.swift; sourceTree = "<group>"; };
+		D580C90D22991FF40092CDD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D58AA151228AB778002215B6 /* Authorization.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authorization.storyboard; sourceTree = "<group>"; };
 		D58AA154228AB9D1002215B6 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		D59FEEB2222A779000A55470 /* GeekbrainsLessons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeekbrainsLessons.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +200,7 @@
 			children = (
 				D59FEEB5222A779000A55470 /* AppDelegate.swift */,
 				D59FEEC1222A779200A55470 /* Info.plist */,
+				D580C90D22991FF40092CDD5 /* GoogleService-Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 			files = (
 				D58AA152228AB778002215B6 /* Authorization.storyboard in Resources */,
 				D59FEEC0222A779200A55470 /* LaunchScreen.storyboard in Resources */,
+				D580C90E22991FF40092CDD5 /* GoogleService-Info.plist in Resources */,
 				D59FEEBD222A779200A55470 /* Assets.xcassets in Resources */,
 				D59FEEBB222A779000A55470 /* Main.storyboard in Resources */,
 			);
@@ -433,30 +437,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GeekbrainsLessons/Pods-GeekbrainsLessons-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-GeekbrainsLessons/Pods-GeekbrainsLessons-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityLogger.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-GeekbrainsLessons/Pods-GeekbrainsLessons-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

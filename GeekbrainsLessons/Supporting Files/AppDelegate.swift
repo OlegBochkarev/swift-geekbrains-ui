@@ -10,6 +10,7 @@ import UIKit
 import AlamofireNetworkActivityLogger
 import AlamofireNetworkActivityIndicator
 import SwiftKeychainWrapper
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,6 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NetworkActivityIndicatorManager.shared.completionDelay = 0.2
         NetworkActivityLogger.shared.startLogging()
         NetworkActivityLogger.shared.level = .debug
+        
+        FirebaseApp.configure()
     }
     
     private func startApp() {
